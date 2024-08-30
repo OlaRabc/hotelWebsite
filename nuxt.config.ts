@@ -5,7 +5,12 @@ export default defineNuxtConfig({
     '@nuxtjs/google-analytics'
   ],
   googleAnalytics: {
-    id: 'G-W9ZLZJ3F1G'
+    id: 'G-W9ZLZJ3F1G',
+    config: {
+      anonymize_ip: true,
+      send_page_view: true
+    },
+    debug: true,
   },
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
