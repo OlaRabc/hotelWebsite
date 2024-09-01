@@ -7,7 +7,7 @@
           <h3 class="font-semibold text-5xl mb-8">Historia</h3>
           <div
             class="border shadow rounded-xl p-12 pt-12 bg-white overflow-y-hidden text-lg"
-            @click="isHistoryOpen = true"
+            @click="openModal"
           >
             Hotel Fun&Relax ma swoje korzenie w pięknej, nadmorskiej
             miejscowości Świnoujście, gdzie od lat przyciąga turystów wyjątkową
@@ -99,6 +99,13 @@
 </template>
 
 <script lang="ts" setup>
+import { gtagEvent } from "@/assets/js/main";
+
+const openModal = ()=>{
+  isHistoryOpen.value = true
+  gtagEvent("event", "page_view", "Button", "Modal Hotel description opened");
+}
+
 const isHistoryOpen = ref(false);
 
 const { data } = await useFetch("http://localhost:8080/room-kind");

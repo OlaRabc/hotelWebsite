@@ -27,4 +27,3 @@ export default defineNuxtConfig({
   }
   
 })
-// 'G-W9ZLZJ3F1G'
