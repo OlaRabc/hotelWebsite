@@ -104,6 +104,6 @@
 import { gtagEvent } from "@/assets/js/main";
 
 const handleSubmit = () => {
-  gtagEvent("event", "form_submit", "form", "contact_form");
+  gtagEvent("event", "contact_form_submit", "form", "contact_form");
 };
 </script>
