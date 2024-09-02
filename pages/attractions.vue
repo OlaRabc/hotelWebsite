@@ -23,7 +23,7 @@
 
         <div class="mx-4 mb-4">
           <h3 class="font-semibold text-2xl mb-2">
-            Muz eum Rybołówstwa Morskiego
+            Muzeum Rybołówstwa Morskiego
           </h3>
           <p>
             Muzeum Rybołówstwa Morskiego to obowiązkowy punkt dla wszystkich
