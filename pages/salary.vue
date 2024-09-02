@@ -1,6 +1,6 @@
 <template>
   <main class="min-h-screen">
-    <FrBanner img="salary/salatryImg.png" class="mb-16">CENNIK</FrBanner>
+    <FrBanner img="salary/salatry.jpeg" class="mb-16">CENNIK</FrBanner>
 
     <div class="mx-12">
       <div
@@ -13,6 +13,7 @@
             class="border rounded px-4 py-2"
             type="date"
             v-model="arrivalDate"
+            @change="gtagEvent('event', 'set_arrival_date', 'date_selection', 'selected_arriave_date',arrivalDate)"
           />
         </div>
 
@@ -165,6 +166,8 @@
 </template>
 
 <script setup lang="ts">
+import { gtagEvent } from "@/assets/js/main";
+
 const arrivalDate = ref("");
 const departureDate = ref("");
 

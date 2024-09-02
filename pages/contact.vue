@@ -1,6 +1,6 @@
 <template>
   <main>
-    <FrBanner img="contact/contactImg.png">KONTAKT</FrBanner>
+    <FrBanner img="contact/contact.jpeg">KONTAKT</FrBanner>
 
     <h2 class="font-semibold text-5xl text-center my-12 mb-16">
       Nawiąż z nami kontakt
@@ -104,6 +104,6 @@
 import { gtagEvent } from "@/assets/js/main";
 
 const handleSubmit = () => {
-  gtagEvent("event", "form_submit", "form", "contact_form");
+  gtagEvent("event", "contact_form_submit", "form", "contact_form");
 };
 </script>
