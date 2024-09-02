@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxtjs/google-gtag": "^1.0.4",
     "nuxt": "^3.12.3",
+    "uuid": "^10.0.0",
     "vue": "latest",
     "vue-gtag": "^2.0.1"
   },
