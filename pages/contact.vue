@@ -21,13 +21,13 @@
         <h3 class="font-semibold text-5xl">Telefon</h3>
         <p
           class="mt-4"
-          @click="gtagEvent('event', 'page_view', 'button', 'reception_number')"
+          @click="gtagEvent('event', 'contact', 'button', 'reception_number')"
         >
           Recepcja +48 652 346 981
         </p>
         <p
           class="mt-4"
-          @click="gtagEvent('event', 'click', 'button', 'restaurant_number')"
+          @click="gtagEvent('event', 'contact', 'button', 'restaurant_number')"
         >
           Restauracja +48 652 567 982
         </p>
@@ -35,10 +35,10 @@
 
       <div class="py-4 px-12 border rounded-xl bg-white">
         <h3 class="font-semibold text-5xl">Email&Fax</h3>
-        <p class="mt-4" @click="gtagEvent('event', 'click', 'button', 'email_contact')">
+        <p class="mt-4" @click="gtagEvent('event', 'contact', 'button', 'email_contact')">
           fandr@gmail.com
         </p>
-        <p class="mt-4" @click="gtagEvent('event', 'click', 'button', 'fax_contact')">
+        <p class="mt-4" @click="gtagEvent('event', 'contact', 'button', 'fax_contact')">
           fax. +48 652 763 762
         </p>
       </div>
@@ -86,7 +86,7 @@
 
       <div
         class="border bg-white lg:rounded-xl lg:w-[100%] max-lg:-mx-16"
-        @click="gtagEvent('event', 'click', 'button', 'location_map')"
+        @click="gtagEvent('event', 'contact', 'button', 'location_map')"
       >
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7905.0064157277!2d14.37818064011855!3d53.91091109032235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa58cdcdae3301%3A0x1fe03a970a6e4dc8!2zxZp3aW5vdWrFm2NpZQ!5e0!3m2!1spl!2spl!4v1721043307924!5m2!1spl!2spl"
@@ -104,6 +104,6 @@
 import { gtagEvent } from "@/assets/js/main";
 
 const handleSubmit = () => {
-  gtagEvent("event", "contact_form_submit", "form", "contact_form");
+  gtagEvent("event", "form", "form", "contact_form_submit");
 };
 </script>

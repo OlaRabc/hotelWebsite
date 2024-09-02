@@ -103,7 +103,7 @@ import { gtagEvent } from "@/assets/js/main";
 
 const openModal = ()=>{
   isHistoryOpen.value = true
-  gtagEvent("event", "page_view", "Button", "Modal Hotel description opened");
+  gtagEvent("event", "expanding_information", "button", "modal_hotel_description_opened");
 }
 
 const isHistoryOpen = ref(false);

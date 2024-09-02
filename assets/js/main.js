@@ -11,7 +11,6 @@ export function gtagEvent(
       window.gtag(interactionType, eventType, {
         event_category: eventCategory,
         event_label: eventLabel,
-        user_id: 'XXX',
         event_label: `submitted_at_${eventTime}`,
         value: value && 1,
       });

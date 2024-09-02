@@ -1,8 +1,8 @@
 <template>
   <main>
-    <FrBanner img="restaurant/restaurantImg.jpeg" class="mb-16"
-      >RESTAURACJA</FrBanner
-    >
+    <FrBanner img="restaurant/restaurantImg.jpeg" class="mb-16">
+      RESTAURACJA
+    </FrBanner>
 
     <div class="mx-8">
       <div class="flex justify-around max-lg:flex-col gap-8">
@@ -35,10 +35,7 @@
         <h3 class="font-semibold text-3xl">Oferta</h3>
 
         <div class="flex justify-around gap-4 flex-wrap">
-          <div
-            class="text-center m-4 w-[300px] flex-auto"
-            @click="isBreakfastOfferOpen = true"
-          >
+          <div class="text-center m-4 w-[300px] flex-auto" @click="openModal('breakfast')">
             <img
               :src="`/images/restaurant/breakfast.jpeg `"
               class="w-full object-cover h-[200px] rounded"
@@ -47,7 +44,7 @@
           </div>
           <div
             class="text-center m-4 w-[300px] flex-auto"
-            @click="isLunchOfferOpen = true"
+            @click="openModal('lunch')"
           >
             <img
               :src="`/images/restaurant/lunch.jpeg`"
@@ -57,7 +54,7 @@
           </div>
           <div
             class="text-center m-4 w-[300px] flex-auto"
-            @click="isDinnerOfferOpen = true"
+            @click="openModal('dinner')"
           >
             <img
               :src="`/images/restaurant/dinner.jpeg`"
@@ -131,10 +128,27 @@
 </template>
 
 <script lang="ts" setup>
+import { gtagEvent } from "@/assets/js/main";
+
 const isBreakfastOfferOpen = ref(false);
 const isLunchOfferOpen = ref(false);
 const isDinnerOfferOpen = ref(false);
 
+const openModal = (modalId) => {
+  switch (modalId) {
+    case "breakfast":
+      isBreakfastOfferOpen.value = true;
+      break;
+    case "lunch":
+      isLunchOfferOpen.value = true;
+      break;
+    case "dinner":
+      isBreakfastOfferOpen.value = true;
+      break;
+  }
+
+  gtagEvent("event", "expanding_information", "button", `modal_${modalId}_opened`);
+};
 const menuDay = [
   {
     title: "Rosół z kaczki",
