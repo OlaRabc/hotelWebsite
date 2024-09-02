@@ -11,8 +11,8 @@
             abyś opuszczając nasz hotel, czuł się o 20 lat młodszy. Wypróbuj
             nasze najnowsze oferty:
             <ul class="list-disc ml-12">
-              <li class="mt-4">zabiegi oczyszczające</li>
-              <li class="mt-2">zabiegi regenerujące</li>
+              <li class="mt-4" @click="gtagEvent('event', 'expanding_information_try', 'button', 'click_in_cleansing_treatments')">zabiegi oczyszczające</li>
+              <li class="mt-2" @click="gtagEvent('event', 'expanding_information_try', 'button', 'click_in_regenerative_treatments')">zabiegi regenerujące</li>
             </ul>
           </div>
         </div>
@@ -33,6 +33,7 @@
           <div
             v-for="item in serviceList"
             class="text-center m-4 w-[300px] flex-auto"
+            @click="gtagEvent('event', 'expanding_information_try', 'button', `click_in_${item.name}`)"
           >
             <img
               :src="`/images/${item.img}`"
@@ -47,6 +48,8 @@
 </template>
 
 <script lang="ts" setup>
+import { gtagEvent } from "@/assets/js/main";
+
 const priceList = [
   {
     name: "Zabieg oczyszczający",
@@ -84,7 +87,7 @@ const serviceList = [
   },
   {
     name: "Pokój do masażu",
-    img: "spa/massageImg.png",
+    img: "spa/massage.jpeg",
   },
   {
     name: "Pokój do masażu dla 2 osób z jacuzzi",

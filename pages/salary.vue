@@ -13,7 +13,15 @@
             class="border rounded px-4 py-2"
             type="date"
             v-model="arrivalDate"
-            @change="gtagEvent('event', 'set_arrival_date', 'date_selection', 'selected_arriave_date',arrivalDate)"
+            @change="
+              gtagEvent(
+                'event',
+                'form',
+                'date_selection__reservation',
+                'selected_arriave_date',
+                arrivalDate
+              )
+            "
           />
         </div>
 
@@ -26,6 +34,15 @@
             class="border rounded px-4 py-2 text-md"
             type="date"
             v-model="departureDate"
+            @change="
+              gtagEvent(
+                'event',
+                'form',
+                'date_selection_reservation',
+                'selected_departure_date',
+                departureDate
+              )
+            "
           />
         </div>
 
