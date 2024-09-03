@@ -47,7 +47,7 @@
         </div>
 
         <button
-          class="bg-[#C4B976] p-2 rounded font-bold text-white text-xl mb-4"
+          class="bg-[#C4B976] py-2 px-6 rounded-3xl font-bold text-white text-xl mb-4"
           @click="loadData"
         >
           Szukaj
@@ -113,7 +113,7 @@
         </div>
 
         <button
-          class="bg-[#C4B976] p-2 rounded font-bold text-white text-xl float-end mb-8"
+          class="bg-[#C4B976] py-2 px-6 rounded-3xl font-bold text-white text-xl float-end mb-8"
           @click="openSummary"
         >
           Rezerwuj
@@ -149,7 +149,7 @@
 
         <div class="text-right">
           <input
-          class="cursor-pointer"
+            class="cursor-pointer"
             type="checkbox"
             v-model="parkingReservation"
             @click="toggleParkingReservation"
@@ -168,7 +168,7 @@
         </h3>
 
         <button
-          class="bg-[#C4B976] p-2 rounded font-bold text-white text-xl float-end"
+          class="bg-[#C4B976] py-2 px-6 rounded-3xl font-bold text-white text-xl float-end"
           @click="openSummary"
         >
           Rezerwuj
