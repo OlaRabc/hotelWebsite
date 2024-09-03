@@ -10,7 +10,7 @@
           <label class="text-xl" for="arrivalDate"> Data zameldowania </label>
           <input
             id="arrivalDate"
-            class="border rounded px-4 py-2"
+            class="border rounded px-4 py-2 cursor-pointer"
             type="date"
             v-model="arrivalDate"
             @change="
@@ -31,7 +31,7 @@
           </label>
           <input
             id="departureDate"
-            class="border rounded px-4 py-2 text-md"
+            class="border rounded px-4 py-2 cursor-pointer"
             type="date"
             v-model="departureDate"
             @change="
@@ -149,6 +149,7 @@
 
         <div class="text-right">
           <input
+          class="cursor-pointer"
             type="checkbox"
             v-model="parkingReservation"
             @click="toggleParkingReservation"

@@ -13,6 +13,9 @@
           class="relative w-11/12 md:w-2/3 h-max px-12 py-14 bg-white rounded-2xl"
           @click.stop
         >
+          <div v-if="props.closeBtn" class="absolute top-8 right-8 text-2xl cursor-pointer" @click=" $emit('onClose')">
+            <font-awesome-icon :icon="['fas', 'xmark']" />
+          </div>
           <slot />
         </div>
       </div>
@@ -31,6 +34,11 @@ const props = defineProps({
     type: Boolean,
     required: true,
     default: false,
+  },
+  closeBtn: {
+    type: Boolean,
+    required: false,
+    default: true,
   },
 });
 </script>

@@ -1,7 +1,9 @@
 <template>
   <div class="relative">
-    <img :src="`/images/${props.img}`" class="w-full h-[30vw] object-cover"/>
-    <p class="text-white font-semibold text-5xl absolute bottom-8 right-8">
+    <img :src="`/images/${props.img}`" class="w-full h-[30vw] object-cover" />
+    <p
+      class="text-white font-semibold text-3xl md:text-5xl absolute bottom-2 right-2 md:bottom-8 md:right-8"
+    >
       <slot />
     </p>
   </div>
@@ -15,3 +17,9 @@ const props = defineProps({
   },
 });
 </script>
+
+<style scoped>
+p {
+  text-shadow: 1px 2px 10px black;
+}
+</style>

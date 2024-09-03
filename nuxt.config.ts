@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     },
     debug: true,
   },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '@fortawesome/fontawesome-svg-core/styles.css'],
   devtools: { enabled: true },
   postcss: {
     plugins: {
