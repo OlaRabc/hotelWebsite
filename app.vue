@@ -4,7 +4,7 @@
     <NuxtPage />
     <FrFooter />
 
-    <FrModal :isOpen="isModalOpen">
+    <FrModal :isOpen="isModalOpen" :closeBtn="false">
       <h2 class="font-bold text-center text-xl mb-8">
         Niniejsza strona jest wykorzystywana do badania zachowania użytkowników
         w ramach pracy magisterskiej.
@@ -18,7 +18,7 @@
         strony. Twoja prywatność jest dla nas ważna, a Twoja decyzja o udziale
         jest całkowicie dobrowolna. Dziękujemy za zrozumienie!
       </p>
-      <div class="flex justify-around">
+      <div class="flex justify-around flex-wrap">
         <button
           class="bg-red-500 p-2 rounded font-bold text-white text-xl mb-4"
           @click="router.back"

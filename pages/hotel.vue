@@ -51,7 +51,6 @@
 
       <FrModal
         :isOpen="isHistoryOpen"
-        :center="true"
         @onClose="isHistoryOpen = false"
       >
         <p class="mb-4">
