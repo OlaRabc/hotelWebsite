@@ -23,7 +23,7 @@ export function gtagSetUid(uId) {
   console.log(uId)
   if (typeof window !== "undefined" && window.gtag) {
     window.gtag('config', 'GA_MEASUREMENT_ID', {
-      'user_id': uId
+      'user_id': "12f"
     });
   } else {
     console.warn("Google Analytics gtag is not loaded.");
