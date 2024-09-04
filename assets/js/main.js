@@ -19,12 +19,11 @@ export function gtagEvent(
   }
 }
 
-export function gtagSetUid() {
+export function gtagSetUid(uId) {
+  console.log(uId)
   if (typeof window !== "undefined" && window.gtag) {
-    const { $uId } = useNuxtApp();
-
     window.gtag('config', 'GA_MEASUREMENT_ID', {
-      'user_id': $uId
+      'user_id': uId
     });
   } else {
     console.warn("Google Analytics gtag is not loaded.");

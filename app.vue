@@ -38,22 +38,27 @@
 
 <script setup lang="ts">
 import { v4 as uuidv4 } from "uuid";
+import { gtagSetUid } from "@/assets/js/main";
 
 const setCookie = () => {
-  console.log(uuidv4())
+  const uId = uuidv4();
   const uIdCookie = useCookie("uId");
-  uIdCookie.value = uuidv4();
-  isModalOpen.value = !uuidv4;
+  uIdCookie.value = uId;
+
+  isModalOpen.value = false;
+  gtagSetUid(uId);
 };
 
 const router = useRouter();
 
-const isModalOpen = ref(!useCookie("uId").value);
+const isModalOpen = ref(false);
 
+onMounted(() => {
+  const cookie = useCookie("uId").value;
+  isModalOpen.value = !cookie;
+
+  if (cookie) {
+    gtagSetUid(cookie);
+  }
+});
 </script>
-
-<style scoped>
-body {
-  background-color: rgb(244, 243, 238);
-}
-</style>
