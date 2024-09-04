@@ -6,9 +6,9 @@
       Nawiąż z nami kontakt
     </h2>
 
-    <div class="flex justify-around max-lg:flex-col max-lg:gap-8 max-lg:mx-8">
+    <div class="flex justify-around max-lg:flex-col gap-8 max-lg:mx-8">
       <div class="py-4 px-12 border rounded-xl bg-white">
-        <h3 class="font-semibold text-5xl">Fun&Relax Hotel</h3>
+        <h3 class="font-semibold text-2xl md:text-4xl">Fun&Relax Hotel</h3>
         <p
           class="mt-4"
           @click="gtagEvent('event', 'click', 'button', 'location')"
@@ -18,7 +18,7 @@
       </div>
 
       <div class="py-4 px-12 border rounded-xl bg-white">
-        <h3 class="font-semibold text-5xl">Telefon</h3>
+        <h3 class="font-semibold text-2xl md:text-4xl">Telefon</h3>
         <p
           class="mt-4"
           @click="gtagEvent('event', 'contact', 'button', 'reception_number')"
@@ -34,11 +34,17 @@
       </div>
 
       <div class="py-4 px-12 border rounded-xl bg-white">
-        <h3 class="font-semibold text-5xl">Email&Fax</h3>
-        <p class="mt-4" @click="gtagEvent('event', 'contact', 'button', 'email_contact')">
+        <h3 class="font-semibold text-2xl md:text-4xl">Email&Fax</h3>
+        <p
+          class="mt-4"
+          @click="gtagEvent('event', 'contact', 'button', 'email_contact')"
+        >
           fandr@gmail.com
         </p>
-        <p class="mt-4" @click="gtagEvent('event', 'contact', 'button', 'fax_contact')">
+        <p
+          class="mt-4"
+          @click="gtagEvent('event', 'contact', 'button', 'fax_contact')"
+        >
           fax. +48 652 763 762
         </p>
       </div>
@@ -51,19 +57,22 @@
         <form @submit.prevent="handleSubmit">
           <div class="flex justify-between flex-wrap">
             <input
-              class="border rounded px-4 py-2 mb-4"
+              id="mail"
+              class="border rounded px-4 py-2 mb-4 w-full"
               type="email"
               placeholder="Podaj maila"
               value=""
             />
             <input
-              class="border rounded px-4 py-2 mb-4"
+              id="name"
+              class="border rounded px-4 py-2 mb-4 w-full sm:w-2/5"
               type="text"
               placeholder="Podaj imię"
               value=""
             />
             <input
-              class="border rounded px-4 py-2 mb-4"
+              id="phone"
+              class="border rounded px-4 py-2 mb-4 w-full sm:w-2/5"
               type="text"
               placeholder="Podaj telefon"
               value=""
@@ -71,14 +80,16 @@
           </div>
 
           <textarea
+            id="description"
             class="border rounded w-full mb-4"
-            id="w3review"
-            name="w3review"
+            name="description"
             rows="4"
             cols="50"
           ></textarea>
 
-          <button class="bg-[#C4B976] p-2 rounded font-bold text-white text-xl">
+          <button
+            class="bg-[#C4B976] py-2 px-6 rounded-3xl font-bold text-white text-xl"
+          >
             Wyślij
           </button>
         </form>
@@ -104,6 +115,6 @@
 import { gtagEvent } from "@/assets/js/main";
 
 const handleSubmit = () => {
-  gtagEvent("event", "form", "form", "contact_form_submit");
+  gtagEvent("event", "form", "form_submit", "contact_form_submit");
 };
 </script>

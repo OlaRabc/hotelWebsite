@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav
-      class="bg-white w-full pt-4 flex flex-col items-center sm:flex-row sm:justify-between"
+      class="bg-white w-full pt-4 flex flex-col items-center sm:flex-row sm:justify-between bg-[#C4B976]"
     >
       <div class="link w-20 h-full ml-4 mb-4">
         <NuxtLink @click="navigateTo(`/`)" class="cursor-pointer">
