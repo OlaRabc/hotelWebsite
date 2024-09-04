@@ -1,7 +1,7 @@
 <template>
   <Transition>
     <div
-      class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 z-[300]"
+      class="fixed top-0 left-0 w-full h-[200vh] bg-black bg-opacity-80 z-[300]"
       v-if="props.isOpen"
     >
       <div

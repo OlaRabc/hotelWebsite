@@ -67,7 +67,6 @@
     </div>
     <FrModal
       :isOpen="isBreakfastOfferOpen"
-      :center="true"
       @onClose="isBreakfastOfferOpen = false"
     >
       <h1 class="font-bold text-center text-2xl">Oferta śniadaniowa</h1>
@@ -87,7 +86,6 @@
 
     <FrModal
       :isOpen="isLunchOfferOpen"
-      :center="true"
       @onClose="isLunchOfferOpen = false"
     >
       <h1 class="font-bold text-center text-2xl">Oferta obiadowa</h1>
@@ -107,7 +105,6 @@
 
     <FrModal
       :isOpen="isDinnerOfferOpen"
-      :center="true"
       @onClose="isDinnerOfferOpen = false"
     >
       <h1 class="font-bold text-center text-2xl">Kolacja</h1>
@@ -134,7 +131,7 @@ const isBreakfastOfferOpen = ref(false);
 const isLunchOfferOpen = ref(false);
 const isDinnerOfferOpen = ref(false);
 
-const openModal = (modalId) => {
+const openModal = (modalId: string) => {
   switch (modalId) {
     case "breakfast":
       isBreakfastOfferOpen.value = true;
