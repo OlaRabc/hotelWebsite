@@ -1,11 +1,11 @@
 <template>
   <Transition>
-    <div
-      class="fixed top-0 left-0 w-full h-[200vh] bg-black bg-opacity-80 z-[300]"
-      v-if="props.isOpen"
-    >
+    <div class="fixed top-0 left-0 w-full h-full z-[300]" v-if="props.isOpen">
       <div
-        class="flex justify-center absolute top-0 left-0 w-full h-full py-16 overflow-y-auto"
+        class="absolute top-0 left-0 w-full h-full overflow-hidden bg-black bg-opacity-80"
+      />
+      <div
+        class="flex justify-center absolute top-0 left-0 w-full h-full py-8 overflow-y-auto"
         :class="{ 'items-center': props.center }"
         @click="$emit('onClose')"
       >
@@ -13,7 +13,11 @@
           class="relative w-11/12 md:w-2/3 h-max px-12 py-14 bg-white rounded-2xl"
           @click.stop
         >
-          <div v-if="props.closeBtn" class="absolute top-8 right-8 text-2xl cursor-pointer" @click=" $emit('onClose')">
+          <div
+            v-if="props.closeBtn"
+            class="absolute top-8 right-8 text-2xl cursor-pointer"
+            @click="$emit('onClose')"
+          >
             <font-awesome-icon :icon="['fas', 'xmark']" />
           </div>
           <slot />
