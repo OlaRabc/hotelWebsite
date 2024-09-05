@@ -39,7 +39,7 @@
         <h3 class="font-semibold text-3xl mb-4">Pokoje:</h3>
 
         <div class="flex gap-4 justify-around flex-wrap">
-          <div v-for="item in data" class="max-w-[250px] flex-auto mb-4">
+          <div v-for="item in rooms" class="max-w-[250px] flex-auto mb-4">
             <img
               :src="`/images/rooms/${item.img}`"
               class="w-full max-h-[150px] object-cover rounded"
@@ -49,10 +49,7 @@
         </div>
       </div>
 
-      <FrModal
-        :isOpen="isHistoryOpen"
-        @onClose="isHistoryOpen = false"
-      >
+      <FrModal :isOpen="isHistoryOpen" @onClose="isHistoryOpen = false">
         <p class="mb-4">
           Hotel Fun&Relax ma swoje korzenie w pięknej, nadmorskiej miejscowości
           Świnoujście, gdzie od lat przyciąga turystów wyjątkową atmosferą i
@@ -100,13 +97,21 @@
 <script lang="ts" setup>
 import { gtagEvent } from "@/assets/js/main";
 
-const openModal = ()=>{
-  isHistoryOpen.value = true
-  gtagEvent("event", "expanding_information", "button", "modal_hotel_description_opened");
-}
+const openModal = () => {
+  isHistoryOpen.value = true;
+  gtagEvent(
+    "event",
+    "expanding_information",
+    "button",
+    "modal_hotel_description_opened"
+  );
+};
 
 const isHistoryOpen = ref(false);
 
-const { data } = await useFetch("http://localhost:8080/room-kind");
-const { data: gallery } = await useFetch("http://localhost:8080/gallery");
+const config = useRuntimeConfig()
+const apiUrl = config.public.apiBaseUrl
+
+const { data:rooms } = await useFetch(apiUrl+"/room-kind");
+const { data: gallery } = await useFetch(apiUrl+"/gallery");
 </script>

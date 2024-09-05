@@ -16,7 +16,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@nuxtjs/google-gtag": "^1.0.4",
+    "@pinia/nuxt": "^0.5.4",
     "nuxt": "^3.12.3",
+    "pinia": "^2.2.2",
     "uuid": "^10.0.0",
     "vue": "latest",
     "vue-gtag": "^2.0.1"

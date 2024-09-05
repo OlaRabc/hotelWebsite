@@ -21,7 +21,7 @@
       <div class="flex justify-around flex-wrap">
         <button
           class="bg-red-500 p-2 rounded font-bold text-white text-xl mb-4"
-          @click="router.back"
+          @click="goToGoogle"
         >
           Wyjdź
         </button>
@@ -39,7 +39,16 @@
 <script setup lang="ts">
 import { v4 as uuidv4 } from "uuid";
 import { gtagSetUid } from "@/assets/js/main";
+import { useBodyOverflow } from "~/stores/bodyOverflow.js";
 
+const bodyOverflow = useBodyOverflow();
+
+watch(
+  () => bodyOverflow.isOverflowHidden,
+  (newValue) => {
+    document.body.style.overflow = newValue ? "hidden" : "auto";
+  }
+);
 const setCookie = () => {
   const uId = uuidv4();
   const uIdCookie = useCookie("uId");
@@ -61,4 +70,8 @@ onMounted(() => {
     gtagSetUid(cookie);
   }
 });
+
+const goToGoogle = () => {
+  window.location.href = "https://www.google.com";
+};
 </script>
