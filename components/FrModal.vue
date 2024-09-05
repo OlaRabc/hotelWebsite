@@ -45,6 +45,17 @@ const props = defineProps({
     default: true,
   },
 });
+
+import { useBodyOverflow } from "~/stores/bodyOverflow.js";
+
+const bodyOverflow = useBodyOverflow();
+
+watch(
+  () => props.isOpen,
+  (newValue: Boolean) => {
+    bodyOverflow.setIsOverflowHidden(newValue);
+  }
+);
 </script>
 
 <style scoped>
