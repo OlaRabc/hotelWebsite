@@ -1,6 +1,6 @@
 <template>
   <main>
-    <FrBanner img="spa/spaImg.png" class="mb-16">STREFA RELAKSU </FrBanner>
+    <FrBanner img="spa/spa.jpeg" class="mb-16">STREFA RELAKSU </FrBanner>
 
     <div class="mx-8">
       <div class="flex justify-around gap-8 max-lg:flex-col">
@@ -36,7 +36,7 @@
             @click="gtagEvent('event', 'expanding_information_try', 'button', `click_in_${item.name}`)"
           >
             <img
-              :src="`/images/${item.img}`"
+              :src="`/images/spa/${item.img}`"
               class="w-full object-cover h-[200px] rounded"
             />
             <p>{{ item.name }}</p>
@@ -79,19 +79,19 @@ const priceList = [
 const serviceList = [
   {
     name: "Prywatne jacuzzi",
-    img: "spa/jacuzzi.jpeg",
+    img: "jacuzzi.jpeg",
   },
   {
     name: "Basen wewnętrzny",
-    img: "spa/swimming-pool.jpeg",
+    img: "swimming-pool.jpeg",
   },
   {
     name: "Pokój do masażu",
-    img: "spa/massage.jpeg",
+    img: "massage.jpeg",
   },
   {
     name: "Pokój do masażu dla 2 osób z jacuzzi",
-    img: "spa/massageAndJauzzi.png",
+    img: "massage-for-2.jpeg",
   },
 ];
 </script>

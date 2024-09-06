@@ -1,6 +1,6 @@
 <template>
   <main>
-    <FrBanner img="attractions/attractionImg.png">ATRAKCJE</FrBanner>
+    <FrBanner img="attractions/attraction.jpeg">ATRAKCJE</FrBanner>
     <div class="mx-8">
       <h2 class="my-8 text-center font-bold text-3xl">
         Zapytaj w recepcji o zniżkę na wymienione poniżej atrakcje.

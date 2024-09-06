@@ -1,6 +1,6 @@
 <template>
   <main>
-    <FrBanner img="restaurant/restaurantImg.jpeg" class="mb-16">
+    <FrBanner img="restaurant/restaurant.jpeg" class="mb-16">
       RESTAURACJA
     </FrBanner>
 
