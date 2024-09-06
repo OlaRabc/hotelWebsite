@@ -1,6 +1,6 @@
 <template>
   <main>
-    <FrBanner img="hotel/hotelImg.png" class="mb-12">HOTEL</FrBanner>
+    <FrBanner img="hotel/hotel.jpeg" class="mb-12">HOTEL</FrBanner>
     <div class="mx-8">
       <div class="flex justify-around gap-8 max-lg:flex-col">
         <div class="lg:mr-8 w-full flex flex-col justify-between max-h-[400px]">
