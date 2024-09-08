@@ -11,7 +11,7 @@ export function gtagEvent(
     window.gtag(interactionType, eventType, {
       event_category: eventCategory,
       event_label: eventLabel,
-      event_label: `submitted_at_${eventTime}`,
+      // event_label: `submitted_at_${eventTime}`,
       value: value && 1,
     });
   } else {
@@ -22,7 +22,7 @@ export function gtagEvent(
 export function gtagSetUid(uId) {
   console.log(uId)
   if (typeof window !== "undefined" && window.gtag) {
-    window.gtag('config', 'GA_MEASUREMENT_ID', {
+    window.gtag('config', 'G-W9ZLZJ3F1G', {
       'user_id': "12f"
     });
   } else {
