@@ -6,8 +6,8 @@
         Zapytaj w recepcji o zniżkę na wymienione poniżej atrakcje.
       </h2>
 
-      <div
-        class="p-6 px-12 border rounded-xl bg-white flex justify-between max-md:flex-col mb-12"
+      <FrBox
+        class="flex justify-between max-md:flex-col mb-12"
       >
         <div class="mx-4 mb-4">
           <h3 class="font-semibold text-2xl mb-2">Oceanarium w Świnoujściu</h3>
@@ -50,7 +50,7 @@
             cieszyć się morską bryzą.
           </p>
         </div>
-      </div>
+      </FrBox>
     </div>
   </main>
 </template>

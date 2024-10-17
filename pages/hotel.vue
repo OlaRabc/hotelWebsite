@@ -5,8 +5,8 @@
       <div class="flex justify-around gap-8 max-lg:flex-col">
         <div class="lg:mr-8 w-full flex flex-col justify-between max-h-[400px]">
           <h3 class="font-semibold text-5xl mb-8">Historia</h3>
-          <div
-            class="border shadow rounded-xl p-12 pt-12 bg-white overflow-y-hidden text-lg"
+          <FrBox
+            class="p-12 overflow-y-hidden text-lg"
             @click="openModal"
           >
             Hotel Fun&Relax ma swoje korzenie w pięknej, nadmorskiej
@@ -16,11 +16,11 @@
             kompleksu stał skromny pensjonat, prowadzony przez rodzinę
             Kozłowskich. Ich mały, przytulny dom gościnny szybko zyskał
             popularność wśród letników szukających spokoju i bliskości natury.
-          </div>
+          </FrBox>
         </div>
 
-        <div
-          class="border rounded-xl bg-white p-4 w-full flex flex-col justify-around"
+        <FrBox
+          class="w-full flex flex-col justify-around"
         >
           <h2 class="font-semibold text-2xl ml-4">Galeria:</h2>
 
@@ -32,10 +32,10 @@
               />
             </div>
           </div>
-        </div>
+        </FrBox>
       </div>
 
-      <div class="border rounded-xl bg-white py-8 px-8 my-12">
+      <FrBox class="px-8 my-12">
         <h3 class="font-semibold text-3xl mb-4">Pokoje:</h3>
 
         <div class="flex gap-4 justify-around flex-wrap">
@@ -47,7 +47,7 @@
             <h2 class="text-center">{{ item?.description }}</h2>
           </div>
         </div>
-      </div>
+      </FrBox>
 
       <FrModal :isOpen="isHistoryOpen" @onClose="isHistoryOpen = false">
         <p class="mb-4">

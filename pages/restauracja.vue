@@ -8,7 +8,7 @@
       <div class="flex justify-around max-lg:flex-col gap-8">
         <div class="w-full mb-8 flex flex-col justify-between">
           <h3 class="font-semibold text-5xl mb-8">Restauracja</h3>
-          <div class="border shadow rounded-xl px-12 py-8 bg-white">
+          <FrBox>
             <div class="my-4">
               Restauracja czynna w godzinach od 12:30 do 22:30
             </div>
@@ -16,10 +16,10 @@
             <div class="my-4">Śniadania: 7:00-11:30</div>
 
             <div class="my-4">Rezerwacje: +48 876 437 098</div>
-          </div>
+          </FrBox>
         </div>
 
-        <div class="border rounded-xl bg-white w-full px-12 py-8 mb-8">
+        <FrBox class="w-full mb-8">
           <h1 class="font-semibold text-2xl">Menu dnia (w każdą niedzielę)</h1>
           <div v-for="item in menuDay" class="flex justify-between m-2">
             <div class="my-4">
@@ -28,10 +28,10 @@
             </div>
             <div class="my-auto">{{ item.prices }} zł</div>
           </div>
-        </div>
+        </FrBox>
       </div>
 
-      <div class="border rounded-xl bg-white py-8 px-12 mb-16">
+      <FrBox class=" mb-16">
         <h3 class="font-semibold text-3xl">Oferta</h3>
 
         <div class="flex justify-around gap-4 flex-wrap">
@@ -63,7 +63,7 @@
             <p>Kolacje</p>
           </div>
         </div>
-      </div>
+      </FrBox>
     </div>
     <FrModal
       :isOpen="isBreakfastOfferOpen"

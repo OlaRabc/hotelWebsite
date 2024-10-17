@@ -1,10 +1,8 @@
 <template>
   <main class="min-h-screen">
-    <FrBanner img="home-page/home.jpeg"  class="mb-12"/>
+    <FrBanner img="home-page/home.jpeg" class="mb-12" />
 
-    <div
-      class="mx-8 md:mx-auto mb-12 w-fit bg-white border rounded-xl px-8 py-16 shadow max-w-4xl"
-    >
+    <FrBox class="mx-8 md:mx-auto mb-12 !px-12 !py-16 max-w-4xl">
       <h4 class="font-bold">
         Witaj w Hotelu Fun&Relax nad Morzem Bałtyckim w Świnoujściu!
       </h4>
@@ -25,6 +23,6 @@
         Życzymy miłego pobytu w Hotelu Fun&Relax w Świnoujściu - Twoim azylu
         spokoju nad morzem!
       </p>
-    </div>
+    </FrBox>
   </main>
 </template>

@@ -7,7 +7,7 @@
     </h2>
 
     <div class="flex justify-around max-lg:flex-col gap-8 max-lg:mx-8">
-      <div class="py-4 px-12 border rounded-xl bg-white">
+      <FrBox>
         <h3 class="font-semibold text-2xl md:text-4xl">Fun&Relax Hotel</h3>
         <p
           class="mt-4"
@@ -15,9 +15,9 @@
         >
           ul. Jesienna 23 00-002, Kryspianowo PL
         </p>
-      </div>
+      </FrBox>
 
-      <div class="py-4 px-12 border rounded-xl bg-white">
+      <FrBox>
         <h3 class="font-semibold text-2xl md:text-4xl">Telefon</h3>
         <p
           class="mt-4"
@@ -31,9 +31,9 @@
         >
           Restauracja +48 652 567 982
         </p>
-      </div>
+      </FrBox>
 
-      <div class="py-4 px-12 border rounded-xl bg-white">
+      <FrBox>
         <h3 class="font-semibold text-2xl md:text-4xl">Email&Fax</h3>
         <p
           class="mt-4"
@@ -47,11 +47,11 @@
         >
           fax. +48 652 763 762
         </p>
-      </div>
+      </FrBox>
     </div>
 
     <div class="flex justify-between my-16 gap-8 mx-16 max-lg:flex-col">
-      <div class="p-6 px-12 border rounded-xl bg-white w-full">
+      <FrBox class="w-full">
         <h3 class="font-semibold text-5xl mb-8">Napisz do nas</h3>
 
         <form @submit.prevent="handleSubmit">
@@ -87,16 +87,12 @@
             cols="50"
           ></textarea>
 
-          <button
-            class="bg-[#C4B976] py-2 px-6 rounded-3xl font-bold text-white text-xl"
-          >
-            Wyślij
-          </button>
+          <FrButton> Wyślij </FrButton>
         </form>
-      </div>
+      </FrBox>
 
       <div
-        class="border bg-white lg:rounded-xl lg:w-[100%] max-lg:-mx-16"
+        class="border bg-white lg:rounded-xl lg:w-[100%] max-lg:-mx-16 shadow-md"
         @click="gtagEvent('event', 'contact', 'button', 'location_map')"
       >
         <iframe
