@@ -1,10 +1,10 @@
 <template>
   <main class="min-h-screen">
-    <FrBanner img="salary/salatry.jpeg" class="mb-16">CENNIK</FrBanner>
+    <FrBanner img="salary/salatry.jpeg">CENNIK</FrBanner>
 
     <div class="mx-12">
       <div
-        class="flex flex-wrap max-lg:flex-col justify-center md:justify-end items-center"
+        class="flex flex-wrap max-lg:flex-col justify-center md:justify-end items-center mb-12"
       >
         <div class="text-center mb-4 md:mr-4">
           <label class="text-xl" for="arrivalDate"> Data zameldowania </label>
@@ -53,10 +53,10 @@
           Szukaj
         </FrButton>
       </div>
-      <div v-if="error" class="text-center text-2xl text-red-900 font-semibold">
+      <div v-if="error" class="text-center text-2xl text-red-900 font-semibold  mb-12">
         Wystapił błąd, spróbuj ponownie później
       </div>
-      <div v-else-if="roomList.length !== 0" class="md:mx-8">
+      <div v-else-if="roomList.length !== 0" class="md:mx-8  mb-12">
         <div
           v-for="room in roomList"
           :key="room?.roomKindId"
@@ -118,7 +118,7 @@
           Rezerwuj
         </FrButton>
       </div>
-      <div v-else class="text-center text-2xl">
+      <div v-else class="text-center text-2xl font-bold mb-12">
         Wybierz termin zameldowania oraz wymeldowania
       </div>
     </div>

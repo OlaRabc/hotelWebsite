@@ -1,10 +1,10 @@
 <template>
   <main>
-    <FrBanner img="hotel/hotel.jpeg" class="mb-12">HOTEL</FrBanner>
+    <FrBanner img="hotel/hotel.jpeg">HOTEL</FrBanner>
     <div class="mx-8">
       <div class="flex justify-around gap-8 max-lg:flex-col">
-        <div class="lg:mr-8 w-full flex flex-col justify-between max-h-[400px]">
-          <h3 class="font-semibold text-5xl mb-8">Historia</h3>
+        <div class="lg:mr-8 w-full flex flex-col justify-between max-h-[400px] mb-24">
+          <h2 class="font-semibold text-5xl mb-8">Historia</h2>
           <FrBox
             class="p-12 overflow-y-hidden text-lg"
             @click="openModal"
@@ -20,9 +20,9 @@
         </div>
 
         <FrBox
-          class="w-full flex flex-col justify-around"
+          class="w-full flex flex-col justify-around mb-24"
         >
-          <h2 class="font-semibold text-2xl ml-4">Galeria:</h2>
+          <h3 class="font-semibold text-2xl ml-4">Galeria:</h3>
 
           <div class="max-h-[300px] overflow-y-scroll">
             <div v-for="item in gallery" class="m-2 my-12 last:mb-0">
@@ -35,8 +35,8 @@
         </FrBox>
       </div>
 
-      <FrBox class="px-8 my-12">
-        <h3 class="font-semibold text-3xl mb-4">Pokoje:</h3>
+      <FrBox class="px-8 mb-24">
+        <h3 class="font-semibold text-3xl mb-12">Pokoje:</h3>
 
         <div class="flex gap-4 justify-around flex-wrap">
           <div v-for="item in rooms" class="max-w-[250px] flex-auto mb-4">
@@ -49,8 +49,8 @@
         </div>
       </FrBox>
 
-      <FrModal :isOpen="isHistoryOpen" @onClose="isHistoryOpen = false">
-        <p class="mb-4">
+      <FrModal :isOpen="isHistoryOpen" @onClose="isHistoryOpen = false" class="leading-relaxed">
+        <p class="mb-6">
           Hotel Fun&Relax ma swoje korzenie w pięknej, nadmorskiej miejscowości
           Świnoujście, gdzie od lat przyciąga turystów wyjątkową atmosferą i
           niezapomnianymi widokami. Historia naszego hotelu sięga początku XX
@@ -59,7 +59,7 @@
           przytulny dom gościnny szybko zyskał popularność wśród letników
           szukających spokoju i bliskości natury.
         </p>
-        <p class="mb-4">
+        <p class="mb-6">
           W latach 60. XX wieku, kiedy Świnoujście zaczęło się rozwijać jako
           popularna destynacja turystyczna, pensjonat przeszedł pierwszą dużą
           modernizację. Rozbudowano go o nowe pokoje i udogodnienia, a także
@@ -67,7 +67,7 @@
           pojawiła się nazwa Fun&Relax, oddająca filozofię łączenia aktywnego
           wypoczynku z relaksem i spokojem.
         </p>
-        <p class="mb-4">
+        <p class="mb-6">
           Przełomowym momentem w historii hotelu był rok 2000, kiedy to rodzina
           Kozłowskich, chcąc sprostać rosnącym wymaganiom gości, podjęła decyzję
           o gruntownej przebudowie obiektu. Projekt architektoniczny nowego
@@ -76,7 +76,7 @@
           otwarty na nowo, oferując gościom luksusowe pokoje, nowoczesne spa
           oraz restaurację z widokiem na morze.
         </p>
-        <p class="mb-4">
+        <p class="mb-6">
           Dziś Hotel Fun&Relax jest jednym z najważniejszych punktów na mapie
           turystycznej Świnoujścia. Od ponad wieku gościmy turystów z Polski i
           zagranicy, zapewniając im nie tylko komfortowy pobyt, ale także

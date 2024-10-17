@@ -2,7 +2,7 @@
   <main>
     <FrBanner img="attractions/attraction.jpeg">ATRAKCJE</FrBanner>
     <div class="mx-8">
-      <h2 class="my-24 text-center font-bold text-3xl">
+      <h2 class="mb-24 text-center font-bold text-3xl">
         Zapytaj w recepcji o zniżkę na wymienione poniżej atrakcje.
       </h2>
 
@@ -12,7 +12,7 @@
         <div
           v-for="item in attractions"
           :key="item.title"
-          class="relative max-w-[80%] md:max-w-[30%] mb-24 border rounded-xl overflow-hidden group"
+          class="group relative max-w-[80%] md:max-w-[30%] mb-24 border rounded-xl overflow-hidden cursor-pointer"
         >
           <img
             :src="`/images/attractions/${item.img}`"
@@ -23,7 +23,7 @@
           />
 
           <h3
-            class="absolute top-0 left-0 w-[100%] py-2 bg-gold-500 bg-opacity-80 text-white text-center text-xl font-bold z-10"
+            class="absolute top-0 left-0 w-[100%] py-2 bg-gold-500 bg-opacity-80 text-white text-center text-xl font-bold z-10 max-md:hidden"
           >
             {{ item.title }}
           </h3>
@@ -39,8 +39,9 @@
         <a
           href="tel:+48652346981"
           class="font-bold underline hover:no-underline"
-          >+48 652 346 981</a
         >
+          +48 652 346 981
+        </a>
       </p>
     </div>
   </main>
