@@ -1,26 +1,36 @@
 <template>
   <main>
-    <FrBanner img="restaurant/restaurant.jpeg" class="mb-16">
-      RESTAURACJA
-    </FrBanner>
+    <FrBanner img="restaurant/restaurant.jpeg"> RESTAURACJA </FrBanner>
 
     <div class="mx-8">
       <div class="flex justify-around max-lg:flex-col gap-8">
-        <div class="w-full mb-8 flex flex-col justify-between">
-          <h3 class="font-semibold text-5xl mb-8">Restauracja</h3>
-          <FrBox>
-            <div class="my-4">
-              Restauracja czynna w godzinach od 12:30 do 22:30
+        <div class="w-full md:mb-12 flex flex-col justify-between">
+          <h2 class="font-semibold text-5xl mb-8">Restauracja</h2>
+          <FrBox class="md:mb-0 py-12">
+            <h2 class="font-bold text-2xl mb-6">Godziny otwarcia:</h2>
+
+            <div class="mb-6">
+              <span class="font-semibold">Śniadania:</span> 7:00-10:30
             </div>
 
-            <div class="my-4">Śniadania: 7:00-11:30</div>
+            <div class="mb-6">
+              <span class="font-semibold">Obiady:</span> 11:00-15:30
+            </div>
 
-            <div class="my-4">Rezerwacje: +48 876 437 098</div>
+            <div class="mb-6">
+              <span class="font-semibold">Kolacje:</span> 16:00-20:00
+            </div>
+            <div>
+              Możliwe rezerwacje pod numerem:
+              <a href="tel:+48876437098" class="underline hover:no-underline">
+                +48 876 437 098
+              </a>
+            </div>
           </FrBox>
         </div>
 
-        <FrBox class="w-full mb-8">
-          <h1 class="font-semibold text-2xl">Menu dnia (w każdą niedzielę)</h1>
+        <FrBox class="w-full mb-12">
+          <h3 class="font-bold text-2xl mb-8">Menu dnia (w każdą niedzielę)</h3>
           <div v-for="item in menuDay" class="flex justify-between m-2">
             <div class="my-4">
               {{ item.title }}
@@ -31,34 +41,37 @@
         </FrBox>
       </div>
 
-      <FrBox class=" mb-16">
-        <h3 class="font-semibold text-3xl">Oferta</h3>
+      <FrBox class="mb-16">
+        <h3 class="font-semibold text-3xl mb-8">Oferta</h3>
 
         <div class="flex justify-around gap-4 flex-wrap">
-          <div class="text-center m-4 w-[300px] flex-auto" @click="openModal('breakfast')">
+          <div
+            class="text-center mb-12 w-[300px] flex-auto"
+            @click="openModal('breakfast')"
+          >
             <img
               :src="`/images/restaurant/breakfast.jpeg `"
-              class="w-full object-cover h-[200px] rounded"
+              class="w-full object-cover h-[200px] rounded-2xl"
             />
             <p>Śniadania</p>
           </div>
           <div
-            class="text-center m-4 w-[300px] flex-auto"
+            class="text-center mb-12 w-[300px] flex-auto"
             @click="openModal('lunch')"
           >
             <img
               :src="`/images/restaurant/lunch.jpeg`"
-              class="w-full object-cover h-[200px] rounded"
+              class="w-full object-cover h-[200px] rounded-2xl"
             />
             <p>Obiady</p>
           </div>
           <div
-            class="text-center m-4 w-[300px] flex-auto"
+            class="text-center w-[300px] flex-auto"
             @click="openModal('dinner')"
           >
             <img
               :src="`/images/restaurant/dinner.jpeg`"
-              class="w-full object-cover h-[200px] rounded"
+              class="w-full object-cover h-[200px] rounded-2xl"
             />
             <p>Kolacje</p>
           </div>
@@ -69,14 +82,14 @@
       :isOpen="isBreakfastOfferOpen"
       @onClose="isBreakfastOfferOpen = false"
     >
-      <h1 class="font-bold text-center text-2xl">Oferta śniadaniowa</h1>
+      <h2 class="font-bold text-center text-2xl mb-8">Oferta śniadaniowa</h2>
 
-      <div v-for="item in breakfastOffer" class="flex justify-between m-2">
-        <div class="my-4">
+      <div v-for="item in breakfastOffer" class="flex justify-between mb-2">
+        <div class="mb-6 font-semibold">
           {{ item.title }}
-          <div class="text-sm">{{ item.subtitle }}</div>
+          <div class="text-sm font-light">{{ item.subtitle }}</div>
         </div>
-        <div class="my-auto">{{ item.prices }} zł</div>
+        <div class="my-auto text-nowrap">{{ item.prices }} zł</div>
       </div>
       <div class="font-bold text-xl text-center">
         Zapraszamy do skosztowania naszych śniadań, które są serwowane
@@ -84,41 +97,35 @@
       </div>
     </FrModal>
 
-    <FrModal
-      :isOpen="isLunchOfferOpen"
-      @onClose="isLunchOfferOpen = false"
-    >
-      <h1 class="font-bold text-center text-2xl">Oferta obiadowa</h1>
+    <FrModal :isOpen="isLunchOfferOpen" @onClose="isLunchOfferOpen = false">
+      <h2 class="font-bold text-center text-2xl mb-8">Oferta obiadowa</h2>
 
-      <div v-for="item in lunchOffer" class="flex justify-between m-2">
-        <div class="my-4">
+      <div v-for="item in lunchOffer" class="flex justify-between mb-2">
+        <div class="mb-6 font-semibold">
           {{ item.title }}
-          <div class="text-sm">{{ item.subtitle }}</div>
+          <div class="text-sm font-light">{{ item.subtitle }}</div>
         </div>
-        <div class="my-auto">{{ item.prices }} zł</div>
+        <div class="my-auto text-nowrap">{{ item.prices }} zł</div>
       </div>
       <div class="font-bold text-xl text-center">
         Zapraszamy do skosztowania naszych pysznych obiadów, które są serwowane
-        codziennie od 12:00 do 16:00.
+        codziennie od 11:00 do 15:30.
       </div>
     </FrModal>
 
-    <FrModal
-      :isOpen="isDinnerOfferOpen"
-      @onClose="isDinnerOfferOpen = false"
-    >
-      <h1 class="font-bold text-center text-2xl">Kolacja</h1>
+    <FrModal :isOpen="isDinnerOfferOpen" @onClose="isDinnerOfferOpen = false">
+      <h2 class="font-bold text-center text-2xl mb-8">Kolacja</h2>
 
       <div v-for="item in dinnerOffer" class="flex justify-between m-2">
-        <div class="my-4">
+        <div class="mb-6 font-semibold">
           {{ item.title }}
-          <div class="text-sm">{{ item.subtitle }}</div>
+          <div class="text-sm font-light">{{ item.subtitle }}</div>
         </div>
-        <div class="my-auto">{{ item.prices }} zł</div>
+        <div class="my-auto text-nowrap">{{ item.prices }} zł</div>
       </div>
       <div class="font-bold text-xl text-center">
         Zapraszamy do skosztowania naszych pysznych posiłków, które są serwowane
-        codziennie od 18:00 do 21:00.
+        codziennie od 16:00 do 20:00.
       </div>
     </FrModal>
   </main>
@@ -144,7 +151,12 @@ const openModal = (modalId: string) => {
       break;
   }
 
-  gtagEvent("event", "expanding_information", "button", `modal_${modalId}_opened`);
+  gtagEvent(
+    "event",
+    "expanding_information",
+    "button",
+    `modal_${modalId}_opened`
+  );
 };
 const menuDay = [
   {
