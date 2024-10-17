@@ -46,12 +46,12 @@
           />
         </div>
 
-        <button
-          class="bg-[#C4B976] py-2 px-6 rounded-3xl font-bold text-white text-xl mb-4"
-          @click="loadData"
+        <FrButton
+          class="mb-4"
+          @on-click="loadData"
         >
           Szukaj
-        </button>
+        </FrButton>
       </div>
       <div v-if="error" class="text-center text-2xl text-red-900 font-semibold">
         Wystapił błąd, spróbuj ponownie później
@@ -66,7 +66,7 @@
             {{ room?.description }}
           </h2>
 
-          <div class="flex flex-col md:flex-row items-center">
+          <FrBox class="flex flex-col md:flex-row items-center">
             <div class="w-[100%] md:w-[50%] flex-auto max-md:mb-8 md:mr-8">
               <img
                 :src="`/images/rooms/${room?.img}`"
@@ -74,7 +74,7 @@
               />
             </div>
 
-            <div class="md:w-full self-start mx-8">
+            <div class="md:w-full self-start mx-8 BORDER">
               <h2 class="font-bold mb-6 text-xl max-md:hidden">
                 {{ room?.description }}
               </h2>
@@ -109,15 +109,14 @@
                 </select>
               </div>
             </div>
-          </div>
+          </FrBox>
         </div>
-
-        <button
-          class="bg-[#C4B976] py-2 px-6 rounded-3xl font-bold text-white text-xl float-end mb-8"
+<!-- bg-[#C4B976] py-2 px-6 rounded-3xl font-bold text-white text-xl float-end mb-8 -->
+        <FrButton
           @click="openSummary"
         >
           Rezerwuj
-        </button>
+        </FrButton>
       </div>
       <div v-else class="text-center text-2xl">
         Wybierz termin zameldowania oraz wymeldowania
@@ -167,12 +166,12 @@
           </span>
         </h3>
 
-        <button
-          class="bg-[#C4B976] py-2 px-6 rounded-3xl font-bold text-white text-xl float-end"
+        <FrButton
+          class="float-end"
           @click="openSummary"
         >
           Rezerwuj
-        </button>
+        </FrButton>
       </div>
       <div v-else>
         <h3 class="font-bold text-xl mb-4 text-center">

@@ -6,7 +6,7 @@
       <div class="flex justify-around gap-8 max-lg:flex-col">
         <div class="w-full flex flex-col justify-between">
           <h2 class="font-semibold text-5xl">Strefa Relaksu</h2>
-          <div class="border shadow rounded-xl px-10 py-8 bg-white">
+          <FrBox>
             Nasi wykwalifikowani specjaliści od masażu i zabiegów zadbają o to,
             abyś opuszczając nasz hotel, czuł się o 20 lat młodszy. Wypróbuj
             nasze najnowsze oferty:
@@ -14,19 +14,19 @@
               <li class="mt-4" @click="gtagEvent('event', 'expanding_information_try', 'button', 'click_in_cleansing_treatments')">zabiegi oczyszczające</li>
               <li class="mt-2" @click="gtagEvent('event', 'expanding_information_try', 'button', 'click_in_regenerative_treatments')">zabiegi regenerujące</li>
             </ul>
-          </div>
+          </FrBox>
         </div>
 
-        <div class="border rounded-xl bg-white w-full px-10 py-8">
+        <FrBox class="border rounded-xl bg-white w-full px-10 py-8">
           <h1 class="font-semibold text-2xl">Cennik:</h1>
           <div v-for="item in priceList" class="flex justify-between m-2">
             <div>{{ item.name }}</div>
             <div>{{ item.prices }} zł</div>
           </div>
-        </div>
+        </FrBox>
       </div>
 
-      <div class="border rounded-xl bg-white py-4 px-8 my-12">
+      <FrBox class="my-12">
         <h3 class="font-semibold text-3xl">Dostępne obiekty:</h3>
 
         <div class="flex justify-around gap-8 flex-wrap">
@@ -42,7 +42,7 @@
             <p>{{ item.name }}</p>
           </div>
         </div>
-      </div>
+      </FrBox>
     </div>
   </main>
 </template>

@@ -37,11 +37,11 @@ const navigateTo = (to: string) => {
 const pageList = [
   {
     name: "Cennik",
-    scr: "salary",
+    scr: "cennik",
   },
   {
     name: "Restauracja",
-    scr: "restaurant",
+    scr: "restauracja",
   },
   {
     name: "Strefa Relaksu",
@@ -49,15 +49,15 @@ const pageList = [
   },
   {
     name: "Atrakcje",
-    scr: "attractions",
+    scr: "atrakcje",
   },
   {
     name: "Kontakt",
-    scr: "contact",
+    scr: "kontakt",
   },
   {
     name: "Hotel",
     scr: "hotel",
-  },
+  }
 ];
 </script>
