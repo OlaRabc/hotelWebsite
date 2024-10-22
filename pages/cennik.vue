@@ -59,8 +59,10 @@ const loadData = (state: string, arrival, departure) => {
 };
 
 const getRooms = async () => {
+  const apiUrl = config.public.apiBaseUrl
+
   const { data, error } = await useFetch(
-    `http://localhost:8080/reservation/${arrivalDate.value}/${departureDate.value}`
+    `${apiUrl}/reservation/${arrivalDate.value}/${departureDate.value}`
   );
 
   roomList.value = data.value;
