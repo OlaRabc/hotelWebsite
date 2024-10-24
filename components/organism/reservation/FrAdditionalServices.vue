@@ -2,7 +2,7 @@
   <div>
     <div class="">
       <label
-        v-for="item in services"
+        v-for="item in servicesList"
         :key="item.value"
         tabindex="1"
         class="relative w-full mb-12 flex justify-between border-b border-b-black pb-4"

@@ -1,7 +1,7 @@
 <template>
   <main>
     <FrBanner img="hotel/hotel.jpeg">HOTEL</FrBanner>
-    <div class="mx-8">
+    <FrContainer>
       <div class="flex justify-around gap-8 max-lg:flex-col">
         <div class="lg:mr-8 w-full flex flex-col justify-between max-h-[400px] mb-24">
           <h2 class="font-semibold text-5xl mb-8">Historia</h2>
@@ -90,7 +90,7 @@
           wracają, by cieszyć się magią Bałtyku i gościnnością Świnoujścia.
         </p>
       </FrModal>
-    </div>
+    </FrContainer>
   </main>
 </template>
 
