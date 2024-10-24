@@ -2,7 +2,7 @@
   <main>
     <FrBanner img="restaurant/restaurant.jpeg"> RESTAURACJA </FrBanner>
 
-    <div class="mx-8">
+    <FrContainer>
       <div class="flex justify-around max-lg:flex-col gap-8">
         <div class="w-full md:mb-12 flex flex-col justify-between">
           <h2 class="font-semibold text-5xl mb-8">Restauracja</h2>
@@ -41,12 +41,12 @@
         </FrBox>
       </div>
 
-      <FrBox class="mb-16">
+      <FrBox class="mb-16 ">
         <h3 class="font-semibold text-3xl mb-8">Oferta</h3>
 
         <div class="flex justify-around gap-4 flex-wrap">
           <div
-            class="text-center mb-12 w-[300px] flex-auto"
+            class="text-center mb-12 w-[300px] flex-auto cursor-pointer"
             @click="openModal('breakfast')"
           >
             <img
@@ -56,7 +56,7 @@
             <p>Śniadania</p>
           </div>
           <div
-            class="text-center mb-12 w-[300px] flex-auto"
+            class="text-center mb-12 w-[300px] flex-auto cursor-pointer"
             @click="openModal('lunch')"
           >
             <img
@@ -66,7 +66,7 @@
             <p>Obiady</p>
           </div>
           <div
-            class="text-center w-[300px] flex-auto"
+            class="text-center w-[300px] flex-auto cursor-pointer"
             @click="openModal('dinner')"
           >
             <img
@@ -77,7 +77,7 @@
           </div>
         </div>
       </FrBox>
-    </div>
+    </FrContainer>
     <FrModal
       :isOpen="isBreakfastOfferOpen"
       @onClose="isBreakfastOfferOpen = false"

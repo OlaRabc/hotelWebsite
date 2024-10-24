@@ -2,7 +2,7 @@
   <main class="min-h-screen">
     <FrBanner img="salary/salatry.jpeg">CENNIK</FrBanner>
 
-    <div class="mx-16">
+    <FrContainer>
       <FrReservationSection @onChange="loadData" />
 
       <div
@@ -11,6 +11,7 @@
       >
         Błędnie wprowdzone daty
       </div>
+
       <div v-else-if="validState == 'valid'" class="mb-12">
         <div v-if="roomList.length === 0">
           Brak wolnych pokoi w wybranym terminie
@@ -25,7 +26,7 @@
         </div>
         <FrButton @click="openSummary"> Rezerwuj </FrButton>
       </div>
-    </div>
+    </FrContainer>
 
     <FrReservationModal
       :isOpen="isSummaryOpen"
@@ -58,9 +59,10 @@ const loadData = (state: string, arrival, departure) => {
   }
 };
 
-const getRooms = async () => {
-  const apiUrl = config.public.apiBaseUrl
+const config = useRuntimeConfig();
+const apiUrl = config.public.apiBaseUrl;
 
+const getRooms = async () => {
   const { data, error } = await useFetch(
     `${apiUrl}/reservation/${arrivalDate.value}/${departureDate.value}`
   );

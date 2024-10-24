@@ -2,7 +2,7 @@
   <main>
     <FrBanner img="contact/contact.jpeg">KONTAKT</FrBanner>
 
-    <div class="mx-16">
+    <FrContainer>
       <h2 class="font-semibold text-5xl text-center mb-16">
         Nawiąż z nami kontakt
       </h2>
@@ -102,7 +102,7 @@
           ></iframe>
         </div>
       </div>
-    </div>
+    </FrContainer>
   </main>
 </template>
 
