@@ -6,7 +6,7 @@
       </h3>
     </div>
     <div v-else>
-      <FrAdditionalServices @on-select="console.log('sdasd')"/>
+      <FrAdditionalServices @on-select="console.log('sdasd')" />
 
       {{ props.reservationList }}
     </div>
@@ -70,6 +70,7 @@
 const props = defineProps({
   reservationList: { type: Object, required: true },
   isOpen: { type: Boolean, required: true },
+  numberOfNights: { type: Number, required: true },
 });
 
 const emit = defineEmits(["onClose"]);

@@ -58,8 +58,6 @@ const setCookie = () => {
   gtagSetUid(uId);
 };
 
-const router = useRouter();
-
 const isModalOpen = ref(false);
 
 onMounted(() => {

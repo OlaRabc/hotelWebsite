@@ -3,16 +3,15 @@
     <FrBanner img="salary/salatry.jpeg">CENNIK</FrBanner>
 
     <FrContainer>
-      <FrReservationSection @onChange="loadData" />
-
+      <FrReservationSection />
       <div
-        v-if="validState == 'error'"
+        v-if="isError"
         class="text-center text-2xl text-red-900 font-semibold mb-12"
       >
         Błędnie wprowdzone daty
       </div>
 
-      <div v-else-if="validState == 'valid'" class="mb-12">
+      <div v-else class="mb-12">
         <div v-if="roomList.length === 0">
           Brak wolnych pokoi w wybranym terminie
         </div>
@@ -31,6 +30,7 @@
     <FrReservationModal
       :isOpen="isSummaryOpen"
       :reservation-list="reservationList"
+      :numberOfNights="numberOfNights"
       @on-close="closeSummary"
     />
   </main>
@@ -39,38 +39,39 @@
 <script setup lang="ts">
 import { gtagEvent } from "@/assets/js/main";
 
+const route = useRoute();
+
 const arrivalDate = ref("");
 const departureDate = ref("");
 
 const validState = ref("");
-const roomList = ref([]);
+
+const isError = ref(false);
 const reservationList = ref([]);
-
-const loadData = (state: string, arrival, departure) => {
-  validState.value = state;
-
-  if (state === "error") {
-    roomList.value = [];
-  } else {
-    arrivalDate.value = arrival;
-    departureDate.value = departure;
-
-    getRooms();
-  }
-};
 
 const config = useRuntimeConfig();
 const apiUrl = config.public.apiBaseUrl;
+const roomList = ref([]);
 
-const getRooms = async () => {
-  const { data, error } = await useFetch(
-    `${apiUrl}/reservation/${arrivalDate.value}/${departureDate.value}`
-  );
+onMounted(async () => {
+  const date = new Date();
+  arrivalDate.value = route.params.arrivalDate;
+  departureDate.value = route.params.departureDate;
 
-  roomList.value = data.value;
-  clearReservationList();
-  countNights();
-};
+  const date1 = new Date(arrivalDate.value);
+  const date2 = new Date(departureDate.value);
+  if (date2 <= date1 || date1 < date || date2 < date) {
+    isError.value = true;
+  } else {
+    const response = await fetch(
+      `${apiUrl}/reservation/${arrivalDate.value}/${departureDate.value}`
+    );
+    if (!response.ok) throw new Error("Nie udało się pobrać danych");
+
+    const result = await response.json();
+    roomList.value = result;
+  }
+});
 
 const isSummaryOpen = ref(false);
 const openSummary = () => {
@@ -101,32 +102,7 @@ const setReservationList = (id: string, value: string) => {
   reservationList.value = newList;
 };
 
-// const setReservationList = (event) => {
-//   const room = roomList.value.find(
-//     (element) => element.roomKindId == event.target.id
-//   );
-
-//   const newList = reservationList.value.filter(
-//     (element) => element.roomKindId != event.target.id
-//   );
-
-//   newList.push({
-//     roomKindId: room.roomKindId,
-//     name: room.description,
-//     numberOfRooms: event.target.value,
-//     price: room.price,
-//   });
-//   reservationList.value = newList;
-
-//   console.log(countCostOfRooms());
-// };
-
-const clearReservationList = () => {
-  reservationList.value = [];
-};
-
 const numberOfNights = ref(0);
-
 const countNights = () => {
   const date1 = new Date(arrivalDate.value);
   const date2 = new Date(departureDate.value);

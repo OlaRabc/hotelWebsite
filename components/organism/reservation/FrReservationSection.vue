@@ -51,24 +51,33 @@
 </template>
 
 <script setup lang="ts">
+const route = useRoute();
+
 import { gtagEvent } from "@/assets/js/main";
 
 const minDate = new Date().toISOString().split("T")[0];
 
 const arrivalDate = ref();
 const departureDate = ref();
-const dateNow = ref(new Date());
 
 onMounted(() => {
   const date = new Date();
 
-  arrivalDate.value = date.toISOString().split("T")[0];
+  if (route.params.arrivalDate) {
+    arrivalDate.value = route.params.arrivalDate;
+  } else {
+    arrivalDate.value = date.toISOString().split("T")[0];
+  }
 
-  date.setDate(date.getDate() + 2);
-  departureDate.value = date.toISOString().split("T")[0];
+  if (route.params.departureDate) {
+    departureDate.value = route.params.departureDate;
+  } else {
+    date.setDate(date.getDate() + 2);
+    departureDate.value = date.toISOString().split("T")[0];
+  }
 });
 
-const emit = defineEmits(["onChange"]);
+const router = useRouter();
 const validData = () => {
   let val: string = "";
 
@@ -82,6 +91,6 @@ const validData = () => {
     val = "valid";
   }
 
-  emit("onChange", val, arrivalDate.value, departureDate.value);
+  router.push(`/cennik/${arrivalDate.value}/${departureDate.value}`);
 };
 </script>
