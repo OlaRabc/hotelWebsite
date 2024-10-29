@@ -64,27 +64,27 @@ const navigateTo = () => {
 const pageList = [
   {
     name: "Cennik",
-    src: "cennik",
+    src: "/cennik",
   },
   {
     name: "Restauracja",
-    src: "restauracja",
+    src: "/restauracja",
   },
   {
     name: "Strefa Relaksu",
-    src: "spa",
+    src: "/spa",
   },
   {
     name: "Atrakcje",
-    src: "atrakcje",
+    src: "/atrakcje",
   },
   {
     name: "Kontakt",
-    src: "kontakt",
+    src: "/kontakt",
   },
   {
     name: "Hotel",
-    src: "hotel",
+    src: "/hotel",
   },
 ];
 
