@@ -6,69 +6,42 @@
       </h3>
     </div>
     <div v-else>
-      <FrAdditionalServices @on-select="console.log('sdasd')" />
+      <FrAdditionalServices
+        v-if="actualState == Reservationtate.SERVICES"
+        @on-accept="goToSummary"
+      />
+      <FrReservationSummary
+        v-else-if="actualState == Reservationtate.SUMMARY"
+        :serviceList="serviceList"
+        :numberOfNights="numberOfNights"
+        :reservationList="reservationList"
+        @on-back="goToServicesy"
+        @on-accept="goToForm"
+      />
+      <FrReservationForm
+        v-else-if="actualState == Reservationtate.FORM"
+        @on-back="backToSummary"
+      />
 
+      <div v-else class="text-red-500 font-bold text-center text-2xl">
+        Wystapił błąd.
+      </div>
       {{ props.reservationList }}
     </div>
   </FrModal>
-
-  <!-- <FrModal :is-open="isSummaryOpen" @onClose="isSummaryOpen = false">
-      <div v-if="reservationList.length !== 0">
-        <h2 class="font-bold text-center text-2xl mb-8">
-          Podsumowanie rezerwacji
-        </h2>
-        <p class="mb-4">
-          Data przyjazdu: <span class="font-semibold">{{ arrivalDate }}</span
-          >, data odjazdu:
-          <span class="font-semibold">{{ departureDate }}</span>
-        </p>
-
-        <div class="mb-12">
-          <h3 class="font-bold text-xl mb-4">Zarezerwowane pokoje:</h3>
-          <div
-            v-for="item in reservationList"
-            :key="item.roomKindId"
-            class="mb-4"
-          >
-            <span class="font-semibold"> {{ item.name }}</span>
-            , ilość pokoi {{ item.numberOfRooms }}, cena za jeden pokój
-            <span class="font-semibold">{{ item.price }} zł</span>
-          </div>
-        </div>
-
-        <div class="text-right">
-          <input
-            class="cursor-pointer"
-            type="checkbox"
-            v-model="parkingReservation"
-            @click="toggleParkingReservation"
-          />
-
-          <label> Zarezerwój miejsce parkingowe (10 zł za dobę) </label>
-        </div>
-        <h3 class="font-bold text-2xl">
-          Suma kosztów:
-          <span class="text-nowrap">
-            {{
-              numberOfNights * (costOfRooms + 10 * Number(parkingReservation))
-            }}
-            zł
-          </span>
-        </h3>
-
-        <FrButton class="float-end" @click="openSummary"> Rezerwuj </FrButton>
-      </div>
-      <div v-else>
-        <h3 class="font-bold text-xl mb-4 text-center">
-          Nie wybrano pokoi do rezerwacji
-        </h3>
-      </div>
-    </FrModal> -->
 </template>
 
 <script setup lang="ts">
+import type ServiceFieldsEnum from "~/enums/ServiceFieldsEnum";
+import type shortRoomEnum from "~/enums/shortRoomEnum";
+
+enum Reservationtate {
+  SERVICES = "SERVICES",
+  SUMMARY = "SUMMARY",
+  FORM = "FORM",
+}
 const props = defineProps({
-  reservationList: { type: Object, required: true },
+  reservationList: { type: Array as () => shortRoomEnum[], required: true },
   isOpen: { type: Boolean, required: true },
   numberOfNights: { type: Number, required: true },
 });
@@ -78,17 +51,23 @@ const emitClose = () => {
   emit("onClose");
 };
 
-// const parkingReservation: Ref<boolean> = ref(false);
-// const toggleParkingReservation = () => {
-//   parkingReservation.value = !parkingReservation.value;
-// };
+const actualState: Ref<Reservationtate> = ref(Reservationtate.SERVICES);
 
-// const costOfRooms = ref(0);
-// const countCostOfRooms = () => {
-//   let cost = 0;
-//   reservationList.value.map((element) => {
-//     cost += element.numberOfRooms * element.price;
-//   });
-//   costOfRooms.value = cost;
-// };
+const serviceList: Ref<ServiceFieldsEnum[]> = ref([]);
+const goToSummary = (list: ServiceFieldsEnum[]) => {
+  serviceList.value = list;
+
+  actualState.value = Reservationtate.SUMMARY;
+};
+
+const goToServicesy = () => {
+  actualState.value = Reservationtate.SERVICES;
+};
+
+const goToForm = () => {
+  actualState.value = Reservationtate.FORM;
+};
+const backToSummary = () => {
+  actualState.value = Reservationtate.SUMMARY;
+};
 </script>

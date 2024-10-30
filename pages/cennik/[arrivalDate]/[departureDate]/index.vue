@@ -12,7 +12,7 @@
       </div>
 
       <div v-else class="mb-12">
-        <div v-if="roomList.length === 0">
+        <div v-if="roomList.length === 0" class="text-center text-xl font-bold">
           Brak wolnych pokoi w wybranym terminie
         </div>
         <div v-else>
@@ -22,8 +22,9 @@
             :room="room"
             @onChange="setReservationList"
           />
+
+          <FrButton @click="openSummary"> Rezerwuj </FrButton>
         </div>
-        <FrButton @click="openSummary"> Rezerwuj </FrButton>
       </div>
     </FrContainer>
 
@@ -44,8 +45,6 @@ const route = useRoute();
 const arrivalDate = ref("");
 const departureDate = ref("");
 
-const validState = ref("");
-
 const isError = ref(false);
 const reservationList = ref([]);
 
@@ -60,7 +59,8 @@ onMounted(async () => {
 
   const date1 = new Date(arrivalDate.value);
   const date2 = new Date(departureDate.value);
-  if (date2 <= date1 || date1 < date || date2 < date) {
+
+  if (date2 <= date1 || date2 < date || date2 < date) {
     isError.value = true;
   } else {
     const response = await fetch(
@@ -70,6 +70,8 @@ onMounted(async () => {
 
     const result = await response.json();
     roomList.value = result;
+
+    countNights()
   }
 });
 
@@ -94,7 +96,7 @@ const setReservationList = (id: string, value: string) => {
 
   newList.push({
     id: room.id,
-    name: room.description,
+    name: room.title,
     numberOfRooms: value,
     price: room.price,
   });
