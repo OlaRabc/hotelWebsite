@@ -14,7 +14,7 @@
       {{ data.title }}
     </h3>
     <div
-      class="absolute top-0 md:-translate-y-[200%] md:group-hover:translate-y-0 left-0 w-full h-[100%] py-8 px-4 bg-black bg-opacity-80 text-white text-md leading-loose overflow-auto transition-all duration-300 delay-100 z-20"
+      class="absolute top-0 md:-translate-y-[200%] md:group-hover:translate-y-0 left-0 w-full h-[100%] py-8 px-4 bg-black bg-opacity-60 text-white text-md leading-loose overflow-auto transition-all duration-300 delay-100 z-20"
     >
       {{ data.description }}
     </div>

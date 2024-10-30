@@ -1,6 +1,8 @@
 <template>
-  <FrBox class="mb-32">
-    <h3 class="font-semibold text-3xl mb-12">Dostępne obiekty:</h3>
+  <FrBox class="mb-32 !px-0">
+    <h3 class="font-semibold text-3xl mb-12 text-center md:text-left">
+      Dostępne obiekty:
+    </h3>
 
     <div class="flex justify-around gap-8 flex-wrap">
       <FrCard

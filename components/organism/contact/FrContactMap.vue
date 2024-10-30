@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border bg-white lg:rounded-xl lg:w-1/2 max-lg:-mx-16 mb-8 lg:mb-0 h-[400px] lg:h-auto shadow-md"
+    class="border bg-white lg:rounded-xl lg:w-1/2 max-lg:-mx-8 mb-8 lg:mb-0 h-[400px] lg:h-auto shadow-md"
     @click="gtagEvent('event', 'contact', 'button', 'location_map')"
   >
     <iframe
