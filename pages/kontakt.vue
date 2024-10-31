@@ -13,4 +13,15 @@
   </main>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+useHead({
+  title: "Fun And Relax Kontakt",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Napisz jeśli masz jakieś pytania związane z pobutem w hotelu Fun And Relax",
+    },
+  ],
+});
+</script>

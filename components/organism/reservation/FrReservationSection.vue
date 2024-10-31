@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="flex flex-wrap max-lg:flex-col justify-center md:justify-end items-center mb-12 mr-8"
+      class="flex flex-wrap max-lg:flex-col justify-center md:justify-end items-center mb-12 md:mr-8"
     >
       <div class="text-center mb-4 md:mr-4">
         <label class="text-xl" for="arrivalDate"> Data zameldowania </label>
