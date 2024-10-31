@@ -50,7 +50,9 @@
     <div class="mb-12">
       <label class="block mb-12 font-bold">Wybierz formę płatności*</label>
 
-      <div class="flex justify-around">
+      <div
+        class="flex flex-col md:flex-row gap-8 items-center md:justify-around"
+      >
         <label
           v-for="item in paymentMethodList"
           :key="item.name"

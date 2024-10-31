@@ -7,3 +7,16 @@
     </FrContainer>
   </main>
 </template>
+
+<script lang="ts" setup>
+useHead({
+  title: "Fun And Relax Rezerwacja",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Rezerwuj pobytu w hotelu Fun and Relax, gdzie komfort, styl i pełen relaks czekają na Ciebie w każdej chwili!",
+    },
+  ],
+});
+</script>

@@ -42,6 +42,17 @@ import { gtagEvent } from "@/assets/js/main";
 
 const route = useRoute();
 
+useHead({
+  title: "Fun And Relax Rezerwacja",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Rezerwuj pobytu w hotelu Fun and Relax, gdzie komfort, styl i pełen relaks czekają na Ciebie w każdej chwili!",
+    },
+  ],
+});
+
 const arrivalDate = ref("");
 const departureDate = ref("");
 
@@ -71,7 +82,7 @@ onMounted(async () => {
     const result = await response.json();
     roomList.value = result;
 
-    countNights()
+    countNights();
   }
 });
 
