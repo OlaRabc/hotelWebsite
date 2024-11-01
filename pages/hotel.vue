@@ -1,6 +1,8 @@
 <template>
   <main>
-    <FrBanner img="hotel/hotel.jpeg">HOTEL</FrBanner>
+    <FrBanner img="hotel/hotel.jpeg" alt="Baner Podstrony Hotel">
+      HOTEL
+    </FrBanner>
 
     <FrContainer>
       <div class="flex justify-around gap-8 max-lg:flex-col">
@@ -16,7 +18,7 @@
 
 <script lang="ts" setup>
 useHead({
-  title: "Fun And Relax O Hotel",
+  title: "Fun And Relax O Hotelu",
   meta: [
     {
       name: "description",

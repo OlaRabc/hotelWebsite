@@ -3,7 +3,7 @@
     <h3 class="font-semibold text-3xl mb-8">Oferta</h3>
 
     <div class="flex justify-around gap-4 flex-wrap">
-      <div
+      <button
         tabindex="0"
         class="relative text-center mb-12 w-[300px] h-[300px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700 outline-2 outline-offset-4"
         @click="openModal('breakfast')"
@@ -12,6 +12,7 @@
       >
         <img
           :src="`/images/restaurant/breakfast.jpeg`"
+          alt="Zdjęcie Śniadania"
           class="w-full object-cover h-full rounded-2xl"
         />
         <p
@@ -19,8 +20,8 @@
         >
           Śniadania
         </p>
-      </div>
-      <div
+      </button>
+      <button
         tabindex="0"
         class="relative text-center mb-12 w-[300px] h-[300px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700 outline-2 outline-offset-4"
         @click="openModal('lunch')"
@@ -29,6 +30,7 @@
       >
         <img
           :src="`/images/restaurant/lunch.jpeg`"
+          alt="Zdjęcie Obiadu"
           class="w-full object-cover h-full rounded-2xl"
         />
         <p
@@ -36,8 +38,8 @@
         >
           Obiady
         </p>
-      </div>
-      <div
+      </button>
+      <button
         tabindex="0"
         class="relative text-center mb-12 w-[300px] h-[300px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700 outline-2 outline-offset-4"
         @click="openModal('dinner')"
@@ -46,6 +48,7 @@
       >
         <img
           :src="`/images/restaurant/dinner.jpeg`"
+          alt="Zdjęcie Kolacji"
           class="w-full object-cover h-full rounded-2xl"
         />
         <p
@@ -53,7 +56,7 @@
         >
           Kolacje
         </p>
-      </div>
+      </button>
     </div>
   </FrBox>
 

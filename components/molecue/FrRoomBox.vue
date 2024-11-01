@@ -6,6 +6,7 @@
     <div class="w-[100%] md:w-[50%] flex-auto max-md:mb-8 md:mr-8">
       <img
         :src="`/images/rooms/${room.img}`"
+        :alt="room.title"
         class="w-full object-cover max-h-[150px] md:rounded-xl md:max-h-[200px]"
       />
     </div>
@@ -56,7 +57,7 @@
         <label :v-for="room.id">
           Ilośc zarezerwowanych przez ciebie pokoi:
         </label>
-        <select name="numberOfRooms" :id="room.id" @change="onChange">
+        <select name="numberOfRooms" :id="room.id" :key="room.id" @change="onChange">
           <option :value="0" selected>0</option>
           <option :value="n" v-for="n in room?.freeRooms">
             {{ n }}

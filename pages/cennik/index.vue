@@ -1,6 +1,8 @@
 <template>
   <main class="min-h-screen">
-    <FrBanner img="salary/salatry.jpeg">CENNIK</FrBanner>
+    <FrBanner img="salary/salatry.jpeg" alt="Baner Podstrony Cennik">
+      CENNIK
+    </FrBanner>
 
     <FrContainer>
       <FrReservationSection />

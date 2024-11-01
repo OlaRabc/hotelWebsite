@@ -21,6 +21,7 @@
       <div>
         <img
           :src="`/images/gallery/${gallery[actualImg]?.img}`"
+          alt="Zdjęcie z galerii"
           class="w-full object-cover max-h-[280px] rounded-3xl shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
         />
       </div>

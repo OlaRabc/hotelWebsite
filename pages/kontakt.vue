@@ -1,6 +1,8 @@
 <template>
   <main>
-    <FrBanner img="contact/contact.jpeg">KONTAKT</FrBanner>
+    <FrBanner img="contact/contact.jpeg" alt="Baner Podstrony Kontakt">
+      KONTAKT
+    </FrBanner>
 
     <FrContainer>
       <FrContactData />
