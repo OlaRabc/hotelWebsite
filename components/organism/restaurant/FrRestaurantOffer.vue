@@ -4,8 +4,11 @@
 
     <div class="flex justify-around gap-4 flex-wrap">
       <div
-        class="relative text-center mb-12 w-[300px] h-[300px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700"
+        tabindex="0"
+        class="relative text-center mb-12 w-[300px] h-[300px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700 outline-2 outline-offset-4"
         @click="openModal('breakfast')"
+        @keydown.enter="openModal('breakfast')"
+        @keydown.space.prevent="openModal('breakfast')"
       >
         <img
           :src="`/images/restaurant/breakfast.jpeg`"
@@ -18,8 +21,11 @@
         </p>
       </div>
       <div
-        class="relative text-center mb-12 w-[300px] h-[300px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700"
+        tabindex="0"
+        class="relative text-center mb-12 w-[300px] h-[300px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700 outline-2 outline-offset-4"
         @click="openModal('lunch')"
+        @keydown.enter="openModal('lunch')"
+        @keydown.space.prevent="openModal('lunch')"
       >
         <img
           :src="`/images/restaurant/lunch.jpeg`"
@@ -32,8 +38,11 @@
         </p>
       </div>
       <div
-        class="relative text-center mb-12 w-[300px] h-[300px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700"
+        tabindex="0"
+        class="relative text-center mb-12 w-[300px] h-[300px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700 outline-2 outline-offset-4"
         @click="openModal('dinner')"
+        @keydown.enter="openModal('dinner')"
+        @keydown.space.prevent="openModal('dinner')"
       >
         <img
           :src="`/images/restaurant/dinner.jpeg`"

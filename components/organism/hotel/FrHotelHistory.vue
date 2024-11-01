@@ -1,7 +1,13 @@
 <template>
   <div class="lg:mr-8 w-full flex flex-col justify-between max-h-[400px] mb-24">
     <h2 class="font-semibold text-5xl mb-8">Historia</h2>
-    <FrBox class="p-12 overflow-y-hidden text-lg cursor-pointer" @click="openModal">
+    <FrBox
+      tabindex="0"
+      class="p-12 overflow-y-hidden text-lg cursor-pointer"
+      @click="openModal"
+      @keydown.enter="openModal"
+      @keydown.space.prevent="openModal"
+    >
       Hotel Fun&Relax ma swoje korzenie w pięknej, nadmorskiej miejscowości
       Świnoujście, gdzie od lat przyciąga turystów wyjątkową atmosferą i
       niezapomnianymi widokami. Historia naszego hotelu sięga początku XX wieku,
@@ -11,11 +17,10 @@
       bliskości natury.
     </FrBox>
 
-    <FrModal
-      :isOpen="isHistoryOpen"
-      @onClose="isHistoryOpen = false"
-    >
-      <p v-for="item in historySections" class="mb-8 last:mb-4 text-lg">{{ item }}</p>
+    <FrModal :isOpen="isHistoryOpen" @onClose="isHistoryOpen = false">
+      <p v-for="item in historySections" class="mb-8 last:mb-4 text-lg">
+        {{ item }}
+      </p>
     </FrModal>
   </div>
 </template>
