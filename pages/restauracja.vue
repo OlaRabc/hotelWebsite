@@ -1,6 +1,11 @@
 <template>
   <main>
-    <FrBanner img="restaurant/restaurant.jpeg"> RESTAURACJA </FrBanner>
+    <FrBanner
+      img="restaurant/restaurant.jpeg"
+      alt="Baner Podstrony Restauracja"
+    >
+      RESTAURACJA
+    </FrBanner>
 
     <FrContainer>
       <div class="flex justify-around max-lg:flex-col gap-8">

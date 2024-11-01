@@ -16,6 +16,7 @@
           <div
             v-if="props.closeBtn"
             tabindex="1"
+            aria-label="Ikona Zamknięcia Modala"
             class="absolute top-8 right-8 text-2xl cursor-pointer"
             @click="$emit('onClose')"
           >

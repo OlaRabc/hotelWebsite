@@ -4,10 +4,12 @@
       <label class="text-xl" for="arrivalDate"> Data zameldowania </label>
       <input
         id="arrivalDate"
-        class="border rounded px-4 py-2 cursor-pointer"
         type="date"
         :min="minDate"
         v-model="arrivalDate"
+        :aria-describedby="isError ? 'error-message' : ''"
+        :aria-invalid="isError ? 'true' : 'false'"
+        class="border rounded px-4 py-2 cursor-pointer"
         @change="
           gtagEvent(
             'event',
@@ -26,10 +28,12 @@
       </label>
       <input
         id="departureDate"
-        class="border rounded px-4 py-2 cursor-pointer"
         type="date"
         :min="minDate"
         v-model="departureDate"
+        :aria-describedby="isError ? 'error-message' : ''"
+        :aria-invalid="isError ? 'true' : 'false'"
+        class="border rounded px-4 py-2 cursor-pointer"
         @change="
           gtagEvent(
             'event',
@@ -42,7 +46,10 @@
       />
     </div>
     <div
-      :class="isError ? 'opacity-100' : 'opacity-0'"
+      v-if="isError"
+      role="alert"
+      aria-live="assertive"
+      id="error-message"
       class="font-bold text-lg text-red-600 text-right mb-4"
     >
       Błędnie podana data
@@ -60,7 +67,6 @@ const minDate = new Date().toISOString().split("T")[0];
 const arrivalDate = ref();
 const departureDate = ref();
 const isError: Ref<boolean> = ref(false);
-const dateNow: Ref<Date> = ref(new Date());
 
 onMounted(() => {
   const date = new Date();

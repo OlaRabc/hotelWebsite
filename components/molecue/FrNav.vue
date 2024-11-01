@@ -3,7 +3,11 @@
     <nav class="relative w-full pt-4 flex justify-between">
       <div class="link w-20 h-full ml-4 mb-4">
         <NuxtLink to="/" @click="navigateTo" class="cursor-pointer">
-          <img src="/public/images/logo.png" class="w-full h-full" />
+          <img
+            src="/public/images/logo.png"
+            class="w-full h-full"
+            alt="Przejście do strony głównej"
+          />
         </NuxtLink>
       </div>
 
@@ -25,6 +29,7 @@
       </div>
 
       <button
+        aria-label="Przycisk Otwietania Menu"
         class="block md:hidden text-4xl mr-8 -mt-2 hover:text-gold-700 focus-within:text-gold-700"
         @click="openNav"
       >
@@ -35,6 +40,7 @@
         :class="isNavOpen ? ' right-0 md:-right-full' : '-right-full'"
       >
         <button
+          aria-label="Przycisk Zamykania Menu"
           class="text-4xl self-end mr-8 mt-8 mb-6 p-1 hover:text-gold-700 focus-within:text-gold-700"
           @click="closeNav"
         >

@@ -1,18 +1,27 @@
 <template>
   <main class="min-h-screen">
-    <FrBanner img="salary/salatry.jpeg">CENNIK</FrBanner>
+    <FrBanner img="salary/salatry.jpeg" alt="Baner Podstrony Cennik"
+      >CENNIK</FrBanner
+    >
 
     <FrContainer>
       <FrReservationSection />
       <div
         v-if="isError"
+        role="alert"
+        aria-live="assertive"
         class="text-center text-2xl text-red-900 font-semibold mb-12"
       >
         Błędnie wprowdzone daty
       </div>
 
       <div v-else class="mb-12">
-        <div v-if="roomList.length === 0" class="text-center text-xl font-bold">
+        <div
+          v-if="roomList.length === 0"
+          role="alert"
+          aria-live="assertive"
+          class="text-center text-xl font-bold"
+        >
           Brak wolnych pokoi w wybranym terminie
         </div>
         <div v-else>
