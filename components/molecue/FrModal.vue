@@ -1,6 +1,6 @@
 <template>
   <Transition>
-    <div class="fixed top-0 left-0 w-full h-full z-[300]" v-if="props.isOpen">
+    <div v-if="props.isOpen" class="fixed top-0 left-0 w-full h-full z-[300]">
       <div
         class="absolute top-0 left-0 w-full h-full overflow-hidden bg-black bg-opacity-80"
       />
@@ -15,6 +15,7 @@
         >
           <div
             v-if="props.closeBtn"
+            tabindex="1"
             class="absolute top-8 right-8 text-2xl cursor-pointer"
             @click="$emit('onClose')"
           >
@@ -56,6 +57,21 @@ watch(
     bodyOverflow.setIsOverflowHidden(newValue);
   }
 );
+const emit = defineEmits(["onClose"]);
+
+const handleKeydown = (event) => {
+  if (event.key === "Escape") {
+    emit("onClose");
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("keydown", handleKeydown);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("keydown", handleKeydown);
+});
 </script>
 
 <style scoped>

@@ -5,8 +5,10 @@
         v-for="item in servicesList"
         :key="item.value"
         tabindex="1"
-        class="group relative w-full mb-12 flex justify-between border-b border-b-black pb-4 cursor-pointer"
+        class="group relative w-full mb-12 flex justify-between border-b border-b-black b-4 cursor-pointer"
         @click.prevent="handleClick(item.name)"
+        @keydown.enter="handleClick(item.name)"
+        @keydown.space.prevent="handleClick(item.name)"
       >
         <div class="w-2/3">
           <div class="font-bold text-xl mb-1">{{ item.name }}</div>
@@ -20,7 +22,7 @@
         <div
           class="relative w-[200px] h-[150px] rounded-xl overflow-hidden border shadow-lg"
         >
-          <div
+          <divF
             class="absolute top-2 right-2 bg-gold-700 text-white rounded-full px-2.5 py-1 shadow-[0_0_15px_5px_rgba(0,0,0,0.75)] group-hover:shadow-[0_0_15px_5px_rgba(250,250,250,0.75)]"
           >
             <font-awesome-icon v-if="item.selected" icon="plus" />
@@ -35,8 +37,9 @@
           />
         </div>
       </label>
+
+      <FrButton @on-click="returnValues" tabindex="1">Dalej</FrButton>
     </div>
-    <FrButton @on-click="returnValues">Dalej</FrButton>
   </div>
 </template>
 

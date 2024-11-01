@@ -1,6 +1,7 @@
 <template>
   <div
-    class="group relative border rounded-xl overflow-hidden cursor-pointer shadow-lg"
+    tabindex="0"
+    class="group relative border rounded-xl overflow-hidden cursor-pointer shadow-lg outline-offset-4"
   >
     <img
       :src="`/images/rooms/${data.img}`"
@@ -16,7 +17,7 @@
       {{ data.title }}
     </h3>
     <div
-      class="absolute top-0 md:-translate-y-[200%] md:group-hover:translate-y-0 left-0 w-full h-[100%] py-8 px-6 bg-black bg-opacity-80 text-white text-md leading-loose overflow-auto transition-all duration-300 delay-100 z-20"
+      class="absolute top-0 md:-translate-y-[200%] left-0 w-full h-[100%] py-8 px-6 bg-black bg-opacity-80 text-white text-md leading-loose md:group-hover:translate-y-0 md:group-focus-within:translate-y-0 overflow-auto transition-all duration-300 delay-100 z-20"
     >
       <h3 class="italic text-xl font-bold mb-1">{{ data.title }}</h3>
       <div class="ml-4">

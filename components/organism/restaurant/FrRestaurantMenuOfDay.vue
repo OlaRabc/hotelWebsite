@@ -1,5 +1,5 @@
 <template>
-  <FrBox class="w-full md:w-1/2 mb-12">
+  <FrBox class="w-full mb-12">
     <h3 class="font-bold text-2xl mb-8">Menu dnia (w każdą niedzielę)</h3>
     <div v-for="item in menuDay" class="flex justify-between m-2">
       <div class="my-4">
