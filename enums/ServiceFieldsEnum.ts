@@ -1,5 +1,6 @@
 export default interface ServiceFieldsEnum {
-    name: string;
+  tag: string;
+  name: string;
   cost: number;
   quantity: string;
   }

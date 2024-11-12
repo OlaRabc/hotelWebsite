@@ -20,13 +20,14 @@
       />
       <FrReservationForm
         v-else-if="actualState == Reservationtate.FORM"
+        :services="serviceList"
+        :reservationList="reservationList"
         @on-back="backToSummary"
       />
 
       <div v-else class="text-red-500 font-bold text-center text-2xl">
         Wystapił błąd.
       </div>
-      {{ props.reservationList }}
     </div>
   </FrModal>
 </template>

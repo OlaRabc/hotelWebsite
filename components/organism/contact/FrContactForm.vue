@@ -53,6 +53,9 @@
 <script setup lang="ts">
 import { gtagEvent } from "@/assets/js/main";
 
+const config = useRuntimeConfig();
+const apiUrl = config.public.apiBaseUrl;
+
 const responseMessage = ref("");
 const form = ref({
   email: "",
@@ -65,7 +68,7 @@ const handleSubmit = async () => {
   gtagEvent("event", "form", "form_submit", "contact_form_submit");
 
   try {
-    await $fetch("http://localhost:8080/contact", {
+    await $fetch(apiUrl + "/contact", {
       method: "POST",
       body: form.value,
     });

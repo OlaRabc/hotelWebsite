@@ -17,6 +17,7 @@ enum TYPE {
   RESET = "reset",
   UNDEFINED = "undefined",
 }
+
 const props = defineProps({
   disabled: {
     type: Boolean,

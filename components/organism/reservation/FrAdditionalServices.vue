@@ -27,7 +27,7 @@
           <div
             class="absolute top-2 right-2 bg-gold-700 text-white rounded-full px-2.5 py-1 shadow-[0_0_15px_5px_rgba(0,0,0,0.75)] group-hover:shadow-[0_0_15px_5px_rgba(250,250,250,0.75)]"
           >
-            <font-awesome-icon v-if="item.selected" icon="plus" />
+            <font-awesome-icon v-if="!item.selected" icon="plus" />
             <font-awesome-icon v-else icon="trash" />
           </div>
           <img
@@ -49,14 +49,17 @@
 interface serviceEnum {
   img: string;
   name: string;
+  tag: string,
   cost: number;
   quantity: String;
   selected: boolean;
 }
+
 const servicesList = ref<serviceEnum[]>([
   {
     img: "/images/salary/flowers.jpeg",
     name: "Kwiaty Na Powitanie",
+    tag: "FLOWERS",
     cost: 100,
     quantity: "/raz",
     selected: false,
@@ -64,6 +67,7 @@ const servicesList = ref<serviceEnum[]>([
   {
     img: "/images/salary/prosecco.jpeg",
     name: "Włoskie Prosecco 'Perla Bianca' 75cl - tylko online",
+    tag: "PROSECCO",
     cost: 110,
     quantity: "/raz",
     selected: false,
@@ -71,6 +75,7 @@ const servicesList = ref<serviceEnum[]>([
   {
     img: "/images/salary/underground-garage.jpeg",
     name: "Stanowisko postojowe w garażu podziemnym",
+    tag: "UNDERGROUND",
     cost: 50,
     quantity: "/noc",
     selected: false,
@@ -78,6 +83,7 @@ const servicesList = ref<serviceEnum[]>([
   {
     img: "/images/salary/unguarded-parking.jpeg",
     name: "Parking niestrzeżony",
+    tag: "PARKING",
     cost: 40,
     quantity: "/noc",
     selected: false,
@@ -85,6 +91,7 @@ const servicesList = ref<serviceEnum[]>([
   {
     img: "/images/salary/baby-bed.jpeg",
     name: "Łóżko dla dziecka",
+    tag: "BABY",
     cost: 25,
     quantity: "/noc",
     selected: false,
@@ -105,6 +112,7 @@ const returnValues = () => {
     .filter((service) => service.selected)
     .map((service) => ({
       name: service.name,
+      tag: service.tag,
       cost: service.cost,
       quantity: service.quantity,
     }));
