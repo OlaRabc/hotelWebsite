@@ -52,10 +52,10 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBaseUrl: "http://16.170.173.78:8080",
+      apiBaseUrl: "https://13.53.146.123:443",
     },
   },
-
+  // http://13.53.146.123:8080
   publicRuntimeConfig: {
     googleAnalytics: {
       id: "G-W9ZLZJ3F1G",
