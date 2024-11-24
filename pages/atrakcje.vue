@@ -1,8 +1,8 @@
 <template>
   <main>
-    <FrBanner img="attractions/attraction.jpeg" alt="Baner Podstrony Atrakcje"
-      >ATRAKCJE</FrBanner
-    >
+    <FrBanner img="attractions/attraction.jpeg" alt="Baner Podstrony Atrakcje">
+      ATRAKCJE
+    </FrBanner>
     <FrContainer>
       <FrAttractionList />
 

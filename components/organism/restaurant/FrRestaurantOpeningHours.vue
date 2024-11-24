@@ -17,10 +17,18 @@
       </div>
       <div>
         Możliwe rezerwacje pod numerem:
-        <a href="tel:+48876437098" class="underline hover:no-underline">
+        <a
+          href="tel:+48876437098"
+          class="underline hover:no-underline"
+          @click="gtagEvent('event', 'restaurant', 'button', 'phone_contact')"
+        >
           +48 876 437 098
         </a>
       </div>
     </FrBox>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { gtagEvent } from "@/assets/js/main";
+</script>

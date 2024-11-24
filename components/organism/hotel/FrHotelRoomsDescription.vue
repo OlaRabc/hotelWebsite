@@ -8,12 +8,15 @@
         :key="item.roomKindId"
         :data="item"
         class="md:max-w-[30%] flex-auto mb-4"
+        @mouseover="gtagEvent('event', 'contact', 'button', `more_info_about_roomKindId_room`)"
       />
     </div>
   </FrBox>
 </template>
 
 <script setup lang="ts">
+import { gtagEvent } from "@/assets/js/main";
+
 const config = useRuntimeConfig();
 const apiUrl = config.public.apiBaseUrl;
 

@@ -41,6 +41,8 @@
   </FrBox>
 </template>
 <script setup lang="ts">
+import { gtagEvent } from "@/assets/js/main";
+
 const config = useRuntimeConfig();
 const apiUrl = config.public.apiBaseUrl;
 
@@ -51,10 +53,13 @@ const previousImg = () => {
   if (actualImg.value === 0) return;
 
   actualImg.value -= 1;
+  gtagEvent('event', 'contact', 'button', 'previous_gallery_img')
 };
 const nextImg = () => {
   if (actualImg.value === gallery.value.length - 1) return;
 
   actualImg.value += 1;
+
+  gtagEvent('event', 'contact', 'button', 'next_gallery_img')
 };
 </script>
