@@ -14,7 +14,7 @@
             'event',
             'expanding_information_try',
             'button',
-            `click_in_${item.name}`
+            `click_in_spa_${item.name}`
           )
         "
       />

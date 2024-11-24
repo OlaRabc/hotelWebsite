@@ -98,10 +98,12 @@ onMounted(async () => {
 const isSummaryOpen = ref(false);
 const openSummary = () => {
   isSummaryOpen.value = true;
+  gtagEvent('event', 'contact', 'button', 'go_to_summary_modal')
 };
 
 const closeSummary = () => {
   isSummaryOpen.value = false;
+  gtagEvent('event', 'contact', 'button', 'close_summary_modal')
 };
 
 const setReservationList = (id: string, value: string) => {
