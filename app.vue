@@ -7,7 +7,11 @@
     <FrModal :isOpen="isModalOpen" :closeBtn="false">
       <h2 class="font-bold text-center text-xl mb-8">
         Niniejsza strona jest wykorzystywana do badania zachowania użytkowników
-        w ramach pracy magisterskiej.
+        w ramach pracy magisterskiej pod tytułem:
+        <div class="italic mt-4">
+          ANALIZA I OPTYMALIZACJA GRAFICZNEGO INTERFEJSU UŻYTKOWNIKA NA
+          PRZYKŁADZIE APLIKACJI REZERWACJI POKOI HOTELOWYCH
+        </div>
       </h2>
       <p class="mb-4">
         W ramach badania aplikacja zapisuje dane na temat elementów, w jakie
