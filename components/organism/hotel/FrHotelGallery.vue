@@ -2,10 +2,7 @@
   <FrBox class="w-full flex flex-col justify-around mb-24">
     <h3 class="font-semibold text-2xl ml-4 mb-4">Galeria:</h3>
 
-    <div v-if="error" class="text-center text-red-700 font-bold text-3xl">
-      Wystapił błąd. Spróbuj ponownie później
-    </div>
-    <div v-else class="relative max-h-[300px]">
+    <div class="relative max-h-[300px]">
       <button
         class="text-3xl absolute top-1/2 left-2 text-white"
         @click="previousImg"
@@ -43,23 +40,28 @@
 <script setup lang="ts">
 import { gtagEvent } from "@/assets/js/main";
 
-const config = useRuntimeConfig();
-const apiUrl = config.public.apiBaseUrl;
-
-const { data: gallery, error } = await useFetch(apiUrl + "/gallery");
+const gallery = [
+  { galleryId: 1, img: "apartment-with-terrace.jpeg" },
+  { galleryId: 2, img: "double-bed.jpeg" },
+  { galleryId: 3, img: "double-room.jpeg" },
+  { galleryId: 4, img: "family-apartment.jpeg" },
+  { galleryId: 5, img: "pool.jpeg" },
+  { galleryId: 6, img: "single-room.jpeg" },
+  { galleryId: 7, img: "jacuzzi.jpeg" },
+];
 const actualImg = ref(0);
 
 const previousImg = () => {
   if (actualImg.value === 0) return;
 
   actualImg.value -= 1;
-  gtagEvent('event', 'contact', 'button', 'previous_gallery_img')
+  gtagEvent("event", "contact", "button", "previous_gallery_img");
 };
 const nextImg = () => {
-  if (actualImg.value === gallery.value.length - 1) return;
+  if (actualImg.value === gallery.length - 1) return;
 
   actualImg.value += 1;
 
-  gtagEvent('event', 'contact', 'button', 'next_gallery_img')
+  gtagEvent("event", "contact", "button", "next_gallery_img");
 };
 </script>

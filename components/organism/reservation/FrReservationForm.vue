@@ -263,15 +263,14 @@ const isDataValid = () => {
 };
 
 const submitForm = async (data: SubmitData) => {
-  try {
-    await $fetch(apiUrl + "/make-reservation", {
-      method: "POST",
-      body: data,
-    });
-  } catch (error) {
-    // responseMessage.value = "ERROR";
-    console.error(error);
-  }
+  // try {
+  //   await $fetch(apiUrl + "/make-reservation", {
+  //     method: "POST",
+  //     body: data,
+  //   });
+  // } catch (error) {
+  //   console.error(error);
+  // }
 };
 
 const prepareDataToSend = () => {
@@ -306,11 +305,6 @@ const setRoomList = () => {
 };
 
 const goToPayments = () => {
-  if (formData.paymentMethod == "BLIK")
-    window.location.href = "https://blik.com";
-  if (formData.paymentMethod == "GOOGLE_PAY")
-    window.location.href = "https://pay.google.com/intl/pl_pl/about/";
-  if (formData.paymentMethod == "TRADITIONAL")
-    window.location.href = "https://www.przelewy24.pl";
+  window.location.href = "https://forms.gle/vy5axhmSEDGQpS2XA";
 };
 </script>
