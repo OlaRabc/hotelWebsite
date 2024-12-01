@@ -20,7 +20,7 @@ export function gtagEvent(
 }
 
 export function gtagSetUid(uId) {
-  console.log(uId)
+  // console.log(uId)
   if (typeof window !== "undefined" && window.gtag) {
     window.gtag('config', 'G-W9ZLZJ3F1G', {
       'user_id': "12f"

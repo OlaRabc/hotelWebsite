@@ -33,19 +33,14 @@
         required
       ></textarea>
 
-      <FrButton class="mb-4"> Wyślij </FrButton>
+      <FrButton class="mb-4" type="submit"> Wyślij </FrButton>
       <p
         v-if="responseMessage === 'SENTED'"
         class="text-center text-xl text-green-700 font-bold"
       >
         Wiadomość wysłana.
       </p>
-      <p
-        v-else-if="responseMessage === 'ERROR'"
-        class="text-center text-xl text-red-700 font-bold"
-      >
-        Wystąpił błąd podczas wysyłania wiadomości.
-      </p>
+      
     </form>
   </FrBox>
 </template>
@@ -64,19 +59,11 @@ const form = ref({
   message: "",
 });
 
-const handleSubmit = async () => {
+const handleSubmit = () => {
+  console.log('sd')
   gtagEvent("event", "form", "form_submit", "contact_form_submit");
 
-  try {
-    await $fetch(apiUrl + "/contact", {
-      method: "POST",
-      body: form.value,
-    });
-    responseMessage.value = "SENTED";
-    form.value = { email: "", name: "", phone: "", message: "" };
-  } catch (error) {
-    responseMessage.value = "ERROR";
-    console.error(error);
-  }
+  responseMessage.value = "SENTED";
+  form.value = { email: "", name: "", phone: "", message: "" };
 };
 </script>
