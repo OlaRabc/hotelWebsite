@@ -38,7 +38,7 @@
     </div>
 
     <FrBox class="w-full">
-      <h3 class="font-bold text-2xl mb-4">Cennik:</h3>
+      <h3 class="font-bold text-2xl mb-4">Rezerwuj:</h3>
       <div
         v-for="item in priceList"
         class="flex justify-between flex-wrap mb-2"

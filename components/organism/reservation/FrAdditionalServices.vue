@@ -40,7 +40,13 @@
         </div>
       </label>
 
-      <FrButton @on-click="returnValues" tabindex="1">Dalej</FrButton>
+      <FrButton
+        @on-click="returnValues"
+        tabindex="1"
+        class="ml-auto mr-0 block"
+      >
+        Dalej
+      </FrButton>
     </div>
   </div>
 </template>
@@ -49,7 +55,7 @@
 interface serviceEnum {
   img: string;
   name: string;
-  tag: string,
+  tag: string;
   cost: number;
   quantity: String;
   selected: boolean;

@@ -91,6 +91,6 @@ const validData = () => {
     val = "valid";
   }
 
-  router.push(`/cennik/${arrivalDate.value}/${departureDate.value}`);
+  router.push(`/rezerwuj/${arrivalDate.value}/${departureDate.value}`);
 };
 </script>

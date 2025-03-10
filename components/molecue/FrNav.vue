@@ -77,8 +77,8 @@ const navigateTo = () => {
 
 const pageList = [
   {
-    name: "Cennik",
-    src: "/cennik",
+    name: "Rezerwuj",
+    src: "/rezerwuj",
   },
   {
     name: "Restauracja",

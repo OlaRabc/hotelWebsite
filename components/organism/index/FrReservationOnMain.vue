@@ -87,7 +87,7 @@ const validData = () => {
     isError.value = true;
     console.error("error");
   } else {
-    router.push(`cennik/${arrivalDate.value}/${departureDate.value}`);
+    router.push(`rezerwuj/${arrivalDate.value}/${departureDate.value}`);
   }
 };
 </script>

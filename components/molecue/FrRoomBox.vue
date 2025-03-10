@@ -41,12 +41,12 @@
       </div>
 
       <div class="mb-4 md:mb-6">
-        <div
-          v-for="item in room.amenities.split(' ')"
-          class="inline-block mr-2"
-        >
-          <font-awesome-icon :icon="item" class="text-xl" />
-        </div>
+        <FrAmenityIcon
+            v-for="item in room.amenities"
+            :icon="item.icon"
+            :description="item.description"
+            :key="item.id"
+          />
       </div>
 
       <p class="mb-8 italic text-center md:text-left">
@@ -57,9 +57,14 @@
         <label :v-for="room.id">
           Ilośc zarezerwowanych przez ciebie pokoi:
         </label>
-        <select name="numberOfRooms" :id="room.id" :key="room.id" @change="onChange">
+        <select
+          name="numberOfRooms"
+          :id="room.id"
+          :key="room.id"
+          @change="onChange"
+        >
           <option :value="0" selected>0</option>
-          <option :value="n" v-for="n in room?.freeRooms">
+          <option :value="n" v-for="n in room?.amount">
             {{ n }}
           </option>
         </select>

@@ -228,7 +228,7 @@ const dinnerOffer = [
     title: "Krem z Dyni z Chrupiącymi Pestkami",
     subtitle:
       "Dynia, cebula, czosnek, bulion warzywny, śmietana, pestki dyni, natka pietruszki",
-    rices: 30,
+    prices: 30,
   },
   {
     title: "Spaghetti Aglio e Olio z Krewetkami",
