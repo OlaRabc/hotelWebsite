@@ -28,6 +28,10 @@ export const rooms = [
         icon: "tv",
         description: "Płaski telewizor",
       },
+      {
+        icon: "paw",
+        description: "Można przyjechać z pupilem",
+      },
     ],
     img: "single-room.jpeg",
   },
@@ -55,6 +59,10 @@ export const rooms = [
       {
         icon: "tv",
         description: "Płaski telewizor",
+      },
+      {
+        icon: "paw",
+        description: "Można przyjechać z pupilem",
       },
     ],
     img: "family-apartment.jpeg",
@@ -92,6 +100,10 @@ export const rooms = [
         icon: "tv",
         description: "Płaski telewizor",
       },
+      {
+        icon: "paw",
+        description: "Można przyjechać z pupilem",
+      },
     ],
     img: "apartment-with-terrace.jpeg",
   },
@@ -120,6 +132,10 @@ export const rooms = [
         icon: "tv",
         description: "Płaski telewizor",
       },
+      {
+        icon: "paw",
+        description: "Można przyjechać z pupilem",
+      },
     ],
     img: "double-room.jpeg",
   },
@@ -147,6 +163,10 @@ export const rooms = [
       {
         icon: "tv",
         description: "Płaski telewizor",
+      },
+      {
+        icon: "paw",
+        description: "Można przyjechać z pupilem",
       },
     ],
     img: "double-bed.jpeg",
