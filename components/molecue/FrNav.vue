@@ -77,12 +77,12 @@ const navigateTo = () => {
 
 const pageList = [
   {
-    name: "Rezerwuj",
-    src: "/rezerwuj",
+    name: "Hotel",
+    src: "/hotel",
   },
   {
-    name: "Restauracja",
-    src: "/restauracja",
+    name: "Kontakt",
+    src: "/kontakt",
   },
   {
     name: "Strefa Relaksu",
@@ -93,12 +93,12 @@ const pageList = [
     src: "/atrakcje",
   },
   {
-    name: "Kontakt",
-    src: "/kontakt",
+    name: "Restauracja",
+    src: "/restauracja",
   },
   {
-    name: "Hotel",
-    src: "/hotel",
+    name: "Rezerwuj",
+    src: "/rezerwuj",
   },
 ];
 
