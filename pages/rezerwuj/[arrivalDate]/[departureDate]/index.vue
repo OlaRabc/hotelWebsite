@@ -32,9 +32,9 @@
             @onChange="setReservationList"
           />
 
-          <FrButton @click="openSummary" class="mr-0 ml-auto block">
+          <!-- <FrButton @click="openSummary" class="mr-0 ml-auto block">
             Rezerwuj
-          </FrButton>
+          </FrButton> -->
         </div>
       </div>
     </FrContainer>

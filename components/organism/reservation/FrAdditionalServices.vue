@@ -102,6 +102,14 @@ const servicesList = ref<serviceEnum[]>([
     quantity: "/noc",
     selected: false,
   },
+  {
+    img: "/images/salary/extra-room.jpeg",
+    name: "Dostawka",
+    tag: "EXTRA-ROOM",
+    cost: 30,
+    quantity: "/noc",
+    selected: false,
+  },
 ]);
 
 const handleClick = (name: String) => {

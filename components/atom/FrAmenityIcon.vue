@@ -4,7 +4,7 @@
       <font-awesome-icon :icon="props.icon" class="text-2xl" />
     </client-only>
     <div
-      class="-top-full left-0 bg-gold-400 text-black rounded absolute opacity-0 group-hover:opacity-100 text-nowrap z-20 font-semibold px-2 transition-opacity duration-300 invisible group-hover:visible"
+      class="-top-full -left-1/2 -translate-x-1/2 bg-gold-400 text-black rounded absolute opacity-0 group-hover:opacity-100 text-nowrap z-20 font-semibold px-2 transition-opacity duration-300 invisible group-hover:visible"
     >
       {{ props.description }}
     </div>
