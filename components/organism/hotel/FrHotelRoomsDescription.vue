@@ -1,24 +1,20 @@
 <template>
-  <FrBox class="px-8 mb-24">
-    <h3 class="font-semibold text-3xl mb-12">Pokoje:</h3>
+    <h3 class="font-semibold text-3xl mb-12">Pokoje w naszej ofercie:</h3>
 
-    <div class="flex gap-4 justify-around flex-wrap">
-      <FrCardRoom
-        v-for="item in rooms"
-        :key="item.id"
-        :data="item"
-        class="md:max-w-[30%] flex-auto mb-4"
-        @mouseover="
-          gtagEvent(
-            'event',
-            'contact',
-            'button',
-            `more_info_about_roomKindId_room`
-          )
-        "
-      />
-    </div>
-  </FrBox>
+    <FrCardRoom
+      v-for="item in rooms"
+      :key="item.id"
+      :room="item"
+      class="flex-auto mb-16"
+      @mouseover="
+        gtagEvent(
+          'event',
+          'contact',
+          'button',
+          `more_info_about_roomKindId_room`
+        )
+      "
+    />
 </template>
 
 <script setup lang="ts">

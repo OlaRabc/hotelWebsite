@@ -1,41 +1,48 @@
 <template>
-  <div
-    tabindex="0"
-    class="relative border rounded-xl overflow-hidden cursor-pointer shadow-lg outline-offset-4"
-  >
-    <img
-      :src="`/images/rooms/${data.img}`"
-      class="w-full h-auto object-cover"
-      width="200"
-      height="200"
-      :alt="data.title"
-    />
+  <FrBox class="md:flex md:justify-between md:gap-32 mb-32">
+    <h2 class="font-bold mb-8 text-xl px-4 text-center md:hidden">
+      {{ room?.title }}
+    </h2>
+
     <div
-      class="absolute top-0 left-0 w-full h-[100%] py-8 px-6 bg-black bg-opacity-80 text-white text-md leading-loose overflow-auto transition-all duration-300 delay-100 z-20"
+      class="bg-gray-100 w-full md:w-1/2 lg:w-1/3 rounded-2xl overflow-hidden mb-12 md:mb-0 shadow-lg"
     >
-      <h3 class="italic text-xl font-bold mb-1">{{ data.title }}</h3>
-      <div class="ml-4">
-        <span class="text-md mb-8">
-          Maksymalna liczba gości: {{ data.maxGuests }}
-        </span>
-        <p class="text-gold-300 font-bold text-xl mb-6 md:mb-8">
-          Cena za noc: {{ data.price }} zł
+      <img
+        :src="`/images/rooms/${room.img}`"
+        :alt="room.title"
+        class="w-full h-64 md:h-96 object-cover object-center"
+      />
+    </div>
+
+    <div class="w-full">
+      <h2 class="font-bold mb-6 text-xl max-md:hidden">
+        {{ room?.title }}
+      </h2>
+      <div class="">
+        <p class="mb-4 md:mb-6">
+          Maksymalna liczba gości: {{ room.maxGuests }}
         </p>
-        <div class="mb-8">
+
+        <div
+          class="mb-4 md:mb-6 flex justify-center md:justify-start gap-2 flex-wrap"
+        >
           <FrAmenityIcon
-            v-for="item in data.amenities"
+            v-for="item in room.amenities"
             :icon="item.icon"
             :description="item.description"
             :key="item.id"
           />
         </div>
+        <p class="italic text-center md:text-left mb-6">
+          {{ room.description }}
+        </p>
+        <div class="text-[#C4B976] font-bold text-lg mb-6">
+          Cena za noc:
+          <span class="text-3xl italic"> {{ room.price }} zł </span>
+        </div>
       </div>
-
-      <p class="text-center">
-        {{ data.description }}
-      </p>
     </div>
-  </div>
+  </FrBox>
 </template>
 
 <script setup lang="ts">
@@ -51,7 +58,7 @@ interface Room {
 }
 
 const props = defineProps({
-  data: {
+  room: {
     type: Object as PropType<Room>,
     required: true,
   },

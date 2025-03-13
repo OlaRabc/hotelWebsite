@@ -40,7 +40,12 @@
           Cena za noc:
           <span class="text-3xl italic"> {{ room.price }} zł </span>
         </div>
-        <FrButton class="block mr-0 ml-auto"> Rezerwuj </FrButton>
+        <FrButton
+          class="block mr-0 ml-auto"
+          @on-click="()=>router.push(`/rezerwuj-pokoj/${room.id}`)"
+        >
+          Rezerwuj
+        </FrButton>
       </div>
     </div>
   </FrBox>
@@ -48,6 +53,7 @@
 
 <script setup lang="ts">
 import type Room from "~/enums/roomEnum";
+const router = useRouter();
 
 const props = defineProps({
   room: {
