@@ -13,10 +13,10 @@
         <img
           :src="`/images/restaurant/breakfast.jpeg`"
           alt="Zdjęcie Śniadania"
-          class="w-full object-cover h-full rounded-2xl"
+          class="w-full object-cover h-full rounded-2xl object-bottom"
         />
         <p
-          class="absolute top-0 left-0 w-full bg-gold-600 font-bold text-white text-xl rounded-b-"
+          class="absolute bottom-0 left-0 w-full bg-gold-600 font-bold text-white text-xl"
         >
           Śniadania
         </p>
@@ -31,10 +31,10 @@
         <img
           :src="`/images/restaurant/lunch.jpeg`"
           alt="Zdjęcie Obiadu"
-          class="w-full object-cover h-full rounded-2xl"
+          class="w-full object-cover h-full rounded-2xl object-top"
         />
         <p
-          class="absolute top-0 left-0 w-full bg-gold-600 font-bold text-white text-xl rounded-b-"
+          class="absolute bottom-0 left-0 w-full bg-gold-600 font-bold text-white text-xl"
         >
           Obiady
         </p>
@@ -49,10 +49,10 @@
         <img
           :src="`/images/restaurant/dinner.jpeg`"
           alt="Zdjęcie Kolacji"
-          class="w-full object-cover h-full rounded-2xl"
+          class="w-full object-cover h-full rounded-2xl object-bottom"
         />
         <p
-          class="absolute top-0 left-0 w-full bg-gold-600 font-bold text-white text-xl rounded-b-"
+          class="absolute bottom-0 left-0 w-full bg-gold-600 font-bold text-white text-xl"
         >
           Kolacje
         </p>
