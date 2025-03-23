@@ -1,5 +1,4 @@
 <template>
-  <div class="overflow-x-hidden">
     <FrNav />
     <NuxtPage />
     <FrFooter />
@@ -33,7 +32,6 @@
         </button>
       </div>
     </FrModal>
-  </div>
 </template>
 
 <script setup lang="ts">

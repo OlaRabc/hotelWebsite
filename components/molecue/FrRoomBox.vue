@@ -40,10 +40,7 @@
           Cena za noc:
           <span class="text-3xl italic"> {{ room.price }} zł </span>
         </div>
-        <FrButton
-          class="block mr-0 ml-auto"
-          @on-click="()=>router.push(`/rezerwuj-pokoj/${room.id}`)"
-        >
+        <FrButton class="block mr-0 ml-auto" @onClick="() => roomBooking(room)">
           Rezerwuj
         </FrButton>
       </div>
@@ -53,6 +50,7 @@
 
 <script setup lang="ts">
 import type Room from "~/enums/roomEnum";
+import { useReservationData } from "~/stores/reservationData";
 const router = useRouter();
 
 const props = defineProps({
@@ -62,9 +60,10 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["onChange"]);
+const reservationData = useReservationData();
+const roomBooking = (room: Room) => {
+  reservationData.setReservationRoom(room);
 
-const onChange = (event) => {
-  emit("onChange", event.target.id, event.target.value);
+  router.push(`/rezerwuj-pokoj/krok-1`);
 };
 </script>
