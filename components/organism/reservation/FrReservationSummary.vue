@@ -49,6 +49,12 @@
         >
           <div>
             {{ item.name }}
+            <button aria-label="Usuń usługę" @click="removeService(item.tag)">
+              <font-awesome-icon
+                :icon="['fas', 'trash']"
+                class="text-red-600 ml-2"
+              />
+            </button>
           </div>
           <div class="italic">
             rezem: {{ countPrice(item.cost, item.quantity) }} zł
@@ -132,7 +138,9 @@ const costSum = () => {
     0
   );
 
-  return countNights() * reservationData.reservationRoom.price +totalServiceCost;
+  return (
+    countNights() * reservationData.reservationRoom.price + totalServiceCost
+  );
 };
 
 const makeReservation = () => {
@@ -155,6 +163,14 @@ const countPrice = (cost, quantity) => {
 };
 
 onMounted(() => {
-  if (!reservationData.reservationRoom) { router.push("/error")}
+  if (!reservationData.reservationRoom) {
+    router.push("/error");
+  }
 });
+
+const removeService = (tag: string) => {
+  reservationData.setSelectedServicesList(
+    reservationData.selectedServicesList.filter((el) => el?.tag !== tag)
+  );
+};
 </script>
