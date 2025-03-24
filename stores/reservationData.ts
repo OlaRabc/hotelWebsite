@@ -7,6 +7,7 @@ export const useReservationData = defineStore("reservationData", {
     arrivalDate: "",
     departureDate: "",
     contractDetails: null,
+    guests: 1,
   }),
   actions: {
     setReservationRoom(value: any) {
@@ -21,6 +22,9 @@ export const useReservationData = defineStore("reservationData", {
     },
     setContractDetails(value: any) {
       this.contractDetails = value;
+    },
+    setGuests(value: number) {
+      this.guests = value;
     },
   },
 });

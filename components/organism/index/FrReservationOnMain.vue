@@ -45,6 +45,28 @@
         "
       />
     </div>
+    <div class="text-center mb-4 flex justify-between">
+      <label class="text-xl" for="guestSum"> Liczba gości: </label>
+      <input
+        id="guestSum"
+        type="number"
+        :min="1"
+        :max="4"
+        v-model="guestSum"
+        :aria-describedby="isError ? 'error-message' : ''"
+        :aria-invalid="isError ? 'true' : 'false'"
+        class="border rounded px-4 py-2 w-24"
+        @change="
+          gtagEvent(
+            'event',
+            'form',
+            'guests_selection_reservation',
+            'selected_guests',
+            guestSum
+          )
+        "
+      />
+    </div>
     <div
       v-if="isError"
       role="alert"
@@ -52,7 +74,7 @@
       id="error-message"
       class="font-bold text-lg text-red-600 text-right mb-4"
     >
-      Błędnie podana data
+      Błędnie podana data lub Liczba gości
     </div>
 
     <FrButton class="mr-0 self-end" @on-click="validData"> Szukaj </FrButton>
@@ -66,6 +88,7 @@ const minDate = new Date().toISOString().split("T")[0];
 
 const arrivalDate = ref();
 const departureDate = ref();
+const guestSum = ref(1);
 const isError: Ref<boolean> = ref(false);
 
 onMounted(() => {
@@ -80,14 +103,21 @@ onMounted(() => {
 const router = useRouter();
 const validData = () => {
   isError.value = false;
-  if (arrivalDate.value < minDate || departureDate.value < minDate) {
+  if (
+    arrivalDate.value < minDate ||
+    departureDate.value < minDate ||
+    guestSum.value < 0 ||
+    guestSum.value > 4
+  ) {
     isError.value = true;
     console.error("error");
   } else if (arrivalDate.value >= departureDate.value) {
     isError.value = true;
     console.error("error");
   } else {
-    router.push(`rezerwuj/${arrivalDate.value}/${departureDate.value}`);
+    router.push(
+      `rezerwuj/${guestSum.value}/${arrivalDate.value}/${departureDate.value}`
+    );
   }
 };
 </script>

@@ -56,10 +56,11 @@ const departureDate = ref("");
 
 const isError = ref(false);
 
-const config = useRuntimeConfig();
 const roomList = ref([]);
 
 onMounted(async () => {
+  const guests = parseInt(route.params.guests);
+
   const date = new Date();
   arrivalDate.value = route.params.arrivalDate;
   departureDate.value = route.params.departureDate;
@@ -67,12 +68,19 @@ onMounted(async () => {
   const date1 = new Date(arrivalDate.value);
   const date2 = new Date(departureDate.value);
 
-  if (date2 <= date1 || date2 < date || date2 < date) {
+  if (
+    date2 <= date1 ||
+    date2 < date ||
+    date2 < date ||
+    guests < 0 ||
+    guests > 4
+  ) {
     isError.value = true;
   } else {
-    roomList.value = data;
+    roomList.value = data.filter((el) => el.maxGuests > guests - 1);
+
+    reservationData.setGuests(guests);
     reservationData.setDates(arrivalDate.value, departureDate.value);
   }
 });
-
 </script>

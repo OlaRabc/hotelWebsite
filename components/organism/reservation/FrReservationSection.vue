@@ -45,20 +45,44 @@
         />
       </div>
 
+      <div class="text-center mb-4 md:mr-8">
+        <label class="text-xl" for="guestSum"> Liczba gości: </label>
+        <input
+          id="guestSum"
+          type="number"
+          :min="1"
+          :max="4"
+          v-model="guestSum"
+          :aria-describedby="isError ? 'error-message' : ''"
+          :aria-invalid="isError ? 'true' : 'false'"
+          class="border rounded px-4 py-2 w-24"
+          @change="
+            gtagEvent(
+              'event',
+              'form',
+              'guests_selection_reservation',
+              'selected_guests',
+              guestSum
+            )
+          "
+        />
+      </div>
+
       <FrButton class="mb-4" @on-click="validData"> Szukaj </FrButton>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const route = useRoute();
-
 import { gtagEvent } from "@/assets/js/main";
+
+const route = useRoute();
 
 const minDate = new Date().toISOString().split("T")[0];
 
 const arrivalDate = ref();
 const departureDate = ref();
+const guestSum = ref(1);
 
 onMounted(() => {
   const date = new Date();
@@ -81,7 +105,12 @@ const router = useRouter();
 const validData = () => {
   let val: string = "";
 
-  if (arrivalDate.value < minDate || departureDate.value < minDate) {
+  if (
+    arrivalDate.value < minDate ||
+    departureDate.value < minDate ||
+    guestSum < 0 ||
+    guestSum > 4
+  ) {
     val = "error";
     console.error("error");
   } else if (arrivalDate.value >= departureDate.value) {
@@ -91,6 +120,6 @@ const validData = () => {
     val = "valid";
   }
 
-  router.push(`/rezerwuj/${arrivalDate.value}/${departureDate.value}`);
+  router.push(`/rezerwuj/${guestSum.value}/${arrivalDate.value}/${departureDate.value}`);
 };
 </script>
