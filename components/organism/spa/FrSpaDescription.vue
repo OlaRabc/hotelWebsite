@@ -6,7 +6,7 @@
         Nasi wykwalifikowani specjaliści od masażu i zabiegów zadbają o to, abyś
         opuszczając nasz hotel, czuł się o 20 lat młodszy. Wypróbuj nasze
         najnowsze oferty:
-        <ul class="list-disc ml-12">
+        <ul class="list-disc md:ml-12 ml-8 md:ml-auto">
           <li
             class="mt-4"
             @click="
@@ -38,7 +38,7 @@
     </div>
 
     <FrBox class="w-full">
-      <h3 class="font-bold text-2xl mb-4">Cennik:</h3>
+      <h3 class="font-bold text-2xl mb-4">Rezerwuj:</h3>
       <div
         v-for="item in priceList"
         class="flex justify-between flex-wrap mb-2"

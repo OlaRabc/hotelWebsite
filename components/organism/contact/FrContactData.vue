@@ -17,25 +17,34 @@
           class="mb-4"
           @click="gtagEvent('event', 'contact', 'button', 'reception_number')"
         >
-          Recepcja +48 652 346 981
+          Recepcja
+          <a
+            href="tel:+48652346981"
+            class="font-bold underline hover:no-underline"
+          >
+            +48 652 346 981
+          </a>
         </p>
         <p
           @click="gtagEvent('event', 'contact', 'button', 'restaurant_number')"
         >
-          Restauracja +48 652 567 982
+          Restauracja
+          <a
+            href="tel:+48652346981"
+            class="font-bold underline hover:no-underline"
+          >
+            +48 652 567 982
+          </a>
         </p>
       </FrBox>
 
       <FrBox class="mb-12">
-        <h3 class="font-semibold text-2xl md:text-4xl mb-4">Email&Fax</h3>
+        <h3 class="font-semibold text-2xl md:text-4xl mb-6">Email</h3>
         <p
-          class="mb-4"
+          class=""
           @click="gtagEvent('event', 'contact', 'button', 'email_contact')"
         >
-          fandr@gmail.com
-        </p>
-        <p @click="gtagEvent('event', 'contact', 'button', 'fax_contact')">
-          fax. +48 652 763 762
+          <a href="mailto:fandr@gmail.com">fandr@gmail.com</a>
         </p>
       </FrBox>
     </div>

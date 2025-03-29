@@ -37,7 +37,7 @@
       </button>
       <div
         class="absolute md:hidden top-0 flex flex-col h-screen w-full z-[100] bg-white transition-all delay-75 duration-300 overflow-y-auto"
-        :class="isNavOpen ? ' right-0 md:-right-full' : '-right-full'"
+        :class="isNavOpen ? ' left-0 md:-left-full' : '-left-full'"
       >
         <button
           aria-label="Przycisk Zamykania Menu"
@@ -77,12 +77,12 @@ const navigateTo = () => {
 
 const pageList = [
   {
-    name: "Cennik",
-    src: "/cennik",
+    name: "Hotel",
+    src: "/hotel",
   },
   {
-    name: "Restauracja",
-    src: "/restauracja",
+    name: "Kontakt",
+    src: "/kontakt",
   },
   {
     name: "Strefa Relaksu",
@@ -93,12 +93,12 @@ const pageList = [
     src: "/atrakcje",
   },
   {
-    name: "Kontakt",
-    src: "/kontakt",
+    name: "Restauracja",
+    src: "/restauracja",
   },
   {
-    name: "Hotel",
-    src: "/hotel",
+    name: "Rezerwuj",
+    src: "/rezerwuj",
   },
 ];
 

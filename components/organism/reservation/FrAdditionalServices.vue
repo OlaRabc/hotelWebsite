@@ -1,55 +1,73 @@
 <template>
   <div>
-    <div class="">
-      <label
-        v-for="item in servicesList"
-        :key="item.value"
-        role="checkbox"
-        :aria-checked="item.selected"
-        tabindex="1"
-        class="group relative w-full mb-12 flex justify-between border-b border-b-black b-4 cursor-pointer"
-        @click.prevent="handleClick(item.name)"
-        @keydown.enter="handleClick(item.name)"
-        @keydown.space.prevent="handleClick(item.name)"
-      >
-        <div class="w-2/3">
-          <div class="font-bold text-xl mb-1">{{ item.name }}</div>
-          <div class="ml-4 mb-6">{{ item.cost }} zł {{ item.quantity }}</div>
-          <input
-            type="checkbox"
-            v-model="item.selected"
-            class="absolute top-0 left-0 opacity-0"
-          />
-        </div>
-        <div
-          class="relative w-[200px] h-[150px] rounded-xl overflow-hidden border shadow-lg"
-        >
-          <div
-            class="absolute top-2 right-2 bg-gold-700 text-white rounded-full px-2.5 py-1 shadow-[0_0_15px_5px_rgba(0,0,0,0.75)] group-hover:shadow-[0_0_15px_5px_rgba(250,250,250,0.75)]"
-          >
-            <font-awesome-icon v-if="!item.selected" icon="plus" />
-            <font-awesome-icon v-else icon="trash" />
-          </div>
-          <img
-            :src="item.img"
-            :alt="item.name"
-            width="200"
-            height="200"
-            class="object-cover w-full h-full"
-          />
-        </div>
-      </label>
+    <h3 class="mb-4 text-2xl md:text-3xl font-bold text-gold-500">
+      Uczyń swój wyjazd bardziej wyjątkowym i dobierz usługi dodatkowe:
+    </h3>
+    <div class="sticky top-[90%] flex justify-between -mx-12 z-20">
+      <FrFollowButton type="left" @click="router.back()">
+        Anuluj
+      </FrFollowButton>
 
-      <FrButton @on-click="returnValues" tabindex="1">Dalej</FrButton>
+      <FrFollowButton @click="goNextStep"> Dalej </FrFollowButton>
     </div>
+    <label
+      v-for="item in servicesList"
+      :key="item.value"
+      role="checkbox"
+      :aria-checked="item.selected"
+      tabindex="1"
+      class="group relative flex justify-between w-full mb-12 pb-4 border-b last:border-b-0 border-b-black cursor-pointer"
+      @click.prevent="handleClick(item.name)"
+      @keydown.enter="handleClick(item.name)"
+      @keydown.space.prevent="handleClick(item.name)"
+    >
+      <div class="w-2/3">
+        <div class="flex gap-2">
+          <div
+            class="mb-1 font-bold text-xl transition-all delay-150"
+            :class="[
+              item.selected
+                ? 'text-green-500 md:group-hover:text-red-300'
+                : 'md:group-hover:text-green-300',
+            ]"
+          >
+            {{ item.name }}
+          </div>
+        </div>
+
+        <div class="ml-4 mb-6">{{ item.cost }} zł {{ item.quantity }}</div>
+
+        <input
+          type="checkbox"
+          v-model="item.selected"
+          class="absolute top-0 left-0 opacity-0"
+        />
+      </div>
+      <div
+        class="relative w-[200px] h-[150px] rounded-xl overflow-hidden border shadow-lg"
+      >
+        <img
+          :src="item.img"
+          :alt="item.name"
+          width="200"
+          height="200"
+          class="object-cover w-full h-full"
+        />
+      </div>
+    </label>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useReservationData } from "~/stores/reservationData";
+const reservationData = useReservationData();
+
+const router = useRouter();
+
 interface serviceEnum {
   img: string;
   name: string;
-  tag: string,
+  tag: string;
   cost: number;
   quantity: String;
   selected: boolean;
@@ -58,7 +76,7 @@ interface serviceEnum {
 const servicesList = ref<serviceEnum[]>([
   {
     img: "/images/salary/flowers.jpeg",
-    name: "Kwiaty Na Powitanie",
+    name: "Kwiaty na powitanie",
     tag: "FLOWERS",
     cost: 100,
     quantity: "/raz",
@@ -96,9 +114,30 @@ const servicesList = ref<serviceEnum[]>([
     quantity: "/noc",
     selected: false,
   },
+  {
+    img: "/images/salary/extra-room.jpeg",
+    name: "Dostawka",
+    tag: "EXTRA-ROOM",
+    cost: 30,
+    quantity: "/noc",
+    selected: false,
+  },
 ]);
 
-const handleClick = (name: String) => {
+onMounted(() => {
+  if (!reservationData.reservationRoom) {
+    router.push("/error");
+  }
+  if (reservationData.selectedServicesList.length) {
+    reservationData.selectedServicesList.map((el1) => {
+      servicesList.value.map((el2) => {
+        if (el1.tag === el2.tag) el2.selected = true;
+      });
+    });
+  }
+});
+
+const handleClick = (name: String): void => {
   servicesList.value.forEach((service) => {
     if (service.name === name) {
       service.selected = !service.selected;
@@ -106,8 +145,7 @@ const handleClick = (name: String) => {
   });
 };
 
-const emit = defineEmits(["onAccept"]);
-const returnValues = () => {
+const goNextStep = (): void => {
   const selectedServicesList = servicesList.value
     .filter((service) => service.selected)
     .map((service) => ({
@@ -117,6 +155,7 @@ const returnValues = () => {
       quantity: service.quantity,
     }));
 
-  emit("onAccept", selectedServicesList);
+  reservationData.setSelectedServicesList(selectedServicesList);
+  router.push(`/rezerwuj-pokoj/krok-2`);
 };
 </script>

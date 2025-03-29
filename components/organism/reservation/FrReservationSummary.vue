@@ -1,85 +1,180 @@
 <template>
-  <div>
-    <h2 class="mb-8 pb-2 font-bold text-3xl border-black border-b-2">
+  <div class="mx-8">
+    <div class="-mx-20 sticky top-[90%] z-20 flex justify-between">
+      <FrFollowButton type="left" @click="router.back()">
+        Cofnij
+      </FrFollowButton>
+
+      <FrFollowButton @click="makeReservation"> Rezerwuj </FrFollowButton>
+    </div>
+
+    <h2
+      class="text-4xl font-bold pb-12 mb-32 border-b-2 border-gold-500 text-center text-gold-500"
+    >
       Podsumowanie:
     </h2>
 
-    <div class="mb-8 pb-2 border-black border-b-2">
-      <div class="mb-24">
-        <h3 class="mb-8 pb-2 font-bold text-2xl">Pokoje:</h3>
+    <FrSelectedRoom />
+
+    <div class="border-b border-black mb-32 pb-8">
+      <h3 class="text-3xl font-bold mb-8 text-gold-500 pb-4">Termin:</h3>
+      <div class="text-center md:text-left md:flex md:justify-around mb-8">
+        <div class="text-xl max-md:mb-8">
+          Data przyjazdu:
+          <span class="italic">{{ reservationData.arrivalDate }}</span>
+        </div>
+        <div class="text-xl">
+          Data odjazdu:
+          <span class="italic">{{ reservationData.departureDate }}</span>
+        </div>
+      </div>
+
+      <div class="text-center text-2xl">
+        Cena za pobyt:
+        <span class="italic font-bold">
+          {{ countNights() * reservationData.reservationRoom?.price }} zł
+        </span>
+      </div>
+    </div>
+
+    <div class="border-b border-black mb-32 pb-8">
+      <h3 class="text-3xl font-bold mb-8 text-gold-500 pb-4">
+        Wybrane dodatkowe usługi:
+      </h3>
+
+      <div v-if="reservationData.selectedServicesList.length" class="md:mx-16">
         <div
-          v-for="item in reservationList"
-          :key="item.id"
-          class="flex justify-between px-4 mb-2 border-b last:border-b-0"
+          v-for="item in reservationData.selectedServicesList"
+          class="text-xl md:flex md:justify-between mb-4 pb-2 border-b"
         >
-          <div class="text-lg font-semibold mr-4">{{ item.name }}:</div>
-          <div class="text-nowrap">
-            {{ item.price * numberOfNights * item.numberOfRooms }} zł
+          <div>
+            {{ item.name }}
+            <button aria-label="Usuń usługę" @click="removeService(item.tag)">
+              <font-awesome-icon
+                :icon="['fas', 'trash']"
+                class="text-red-600 ml-2"
+              />
+            </button>
+          </div>
+          <div class="italic">
+            rezem: {{ countPrice(item.cost, item.quantity) }} zł
           </div>
         </div>
       </div>
-      <div class="mb-24">
-        <h3 class="mb-8 pb-2 font-bold text-2xl">Usługi dodatkowe:</h3>
+      <div v-else>Brak wybranych usług</div>
+    </div>
 
-        <div v-if="!serviceList.length">Nie wybrano żadnych usług.</div>
-        <div
-          v-for="item in serviceList"
-          :key="item.name"
-          class="flex justify-between px-4 mb-2 border-b last:border-none"
-        >
-          <div class="text-lg font-semibold mr-4">{{ item.name }}:</div>
-          <div class="text-nowrap">
+    <div class="border-b border-black mb-32 pb-8">
+      <h3 class="text-3xl font-bold mb-8 text-gold-500 pb-4">
+        Dane do rezerwacji:
+      </h3>
+
+      <div class="ml-4">
+        <div class="text-xl mb-8">
+          Imię i nazwisko:
+          <span class="italic">
+            {{ reservationData.contractDetails?.name }}
+          </span>
+        </div>
+        <div class="text-xl mb-8">
+          Adres email:
+          <span class="italic">
+            {{ reservationData.contractDetails?.email }}
+          </span>
+        </div>
+
+        <div class="text-xl mb-8">
+          Rodzaj płatności:
+          <span class="italic">
             {{
-              item.quantity === "/raz" ? item.cost : item.cost * numberOfNights
+              reservationData.contractDetails?.paymentMethod === "GOOGLE_PAY"
+                ? "Google Pay"
+                : ""
             }}
-            zł
-          </div>
+            {{
+              reservationData.contractDetails?.paymentMethod === "TRADITIONAL"
+                ? "Karta płatnicza "
+                : ""
+            }}
+            {{
+              reservationData.contractDetails?.paymentMethod === "BLIK"
+                ? "BLIK"
+                : ""
+            }}
+          </span>
+        </div>
+
+        <div class="text-xl mb-8">
+          Uwagi do rezerwacji:
+          <span class="italic">
+            {{ reservationData.contractDetails?.reservationDetails || "BRAK" }}
+          </span>
+        </div>
+
+        <div
+          v-if="reservationData.contractDetails?.vatInvoice"
+          class="text-xl mb-8 italic"
+        >
+          Faktura
         </div>
       </div>
     </div>
-    <div class="mr-8 mb-24 text-xl text-right font-semibold">
-      Razem:
-      <span class="text-gold-700 font-bold text-3xl">{{ costSum }}</span> zł
-    </div>
 
-    <div class="flex justify-between">
-      <FrButton @on-click="onBack"> Wróć</FrButton>
-      <FrButton @on-click="onAccept"> Dalej</FrButton>
+    <div class="text-4xl text-center font-bold mb-32 pb-32 md:pb-8">
+      Suma: <span class="text-gold-500 italic"> {{ costSum() }} zł</span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type ServiceFieldsEnum from "~/enums/ServiceFieldsEnum";
-import type shortRoomEnum from "~/enums/shortRoomEnum";
+import { useReservationData } from "~/stores/reservationData";
+const reservationData = useReservationData();
 
-const props = defineProps({
-  reservationList: { type: Array as () => shortRoomEnum[], required: true },
-  serviceList: { type: Array as () => ServiceFieldsEnum[], required: true },
-  numberOfNights: { type: Number, required: true },
-});
+const router = useRouter();
 
-const costSum = computed(() => {
-  const totalRoomCost = props.reservationList.reduce((acc, item) => {
-    return acc + item.price * props.numberOfNights * item.numberOfRooms;
-  }, 0);
+const costSum = () => {
+  const totalServiceCost = reservationData.selectedServicesList.reduce(
+    (acc, item) => {
+      return (
+        acc +
+        (item?.quantity === "/raz" ? item?.cost : item?.cost * countNights())
+      );
+    },
+    0
+  );
 
-  const totalServiceCost = props.serviceList.reduce((acc, item) => {
-    return (
-      acc +
-      (item.quantity === "/raz" ? item.cost : item.cost * props.numberOfNights)
-    );
-  }, 0);
-
-  return totalRoomCost + totalServiceCost;
-});
-
-const emit = defineEmits(["onAccept", "onBack"]);
-const onAccept = () => {
-  emit("onAccept");
+  return (
+    countNights() * reservationData.reservationRoom?.price + totalServiceCost
+  );
 };
 
-const onBack = () => {
-  emit("onBack");
+const makeReservation = () => {
+  window.location.href = "https://forms.gle/Q6UAbZG6EdtG6aT3A";
+};
+
+const countNights = () => {
+  let date1 = new Date(reservationData.arrivalDate);
+  let date2 = new Date(reservationData.departureDate);
+
+  let diffInTime = date2 - date1;
+  return diffInTime / (1000 * 60 * 60 * 24);
+};
+
+const countPrice = (cost, quantity) => {
+  const c = quantity === "/raz" ? cost : cost * countNights();
+
+  return c;
+};
+
+onMounted(() => {
+  if (!reservationData.reservationRoom) {
+    router.push("/error");
+  }
+});
+
+const removeService = (tag: string) => {
+  reservationData.setSelectedServicesList(
+    reservationData.selectedServicesList.filter((el) => el?.tag !== tag)
+  );
 };
 </script>

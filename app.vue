@@ -1,5 +1,4 @@
 <template>
-  <div class="overflow-x-hidden">
     <FrNav />
     <NuxtPage />
     <FrFooter />
@@ -20,7 +19,7 @@
       </p>
       <div class="flex justify-around flex-wrap">
         <button
-          class="bg-red-500 p-2 rounded font-bold text-white text-xl mb-4"
+          class="p-2 rounded font-bold text-white text-xl mb-4"
           @click="goToGoogle"
         >
           Wyjdź
@@ -33,7 +32,6 @@
         </button>
       </div>
     </FrModal>
-  </div>
 </template>
 
 <script setup lang="ts">

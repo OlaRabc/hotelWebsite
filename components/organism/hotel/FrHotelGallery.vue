@@ -4,6 +4,7 @@
 
     <div class="relative max-h-[300px]">
       <button
+        v-if="actualImg !== 0"
         class="text-3xl absolute top-1/2 left-2 text-white"
         @click="previousImg"
       >
@@ -15,15 +16,19 @@
         </ClientOnly>
       </button>
 
-      <div>
-        <img
-          :src="`/images/gallery/${gallery[actualImg]?.img}`"
-          alt="Zdjęcie z galerii"
-          class="w-full object-cover max-h-[280px] rounded-3xl shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
-        />
+      <div class="w-full min-h-[280px]">
+        <transition name="fade" mode="out-in">
+          <img
+            :key="gallery[actualImg]?.img"
+            :src="`/images/gallery/${gallery[actualImg]?.img}`"
+            alt="Zdjęcie z galerii"
+            class="w-full object-cover max-h-[280px] rounded-3xl shadow-[0_5px_10px_0px_rgba(0,0,0,0.3)]"
+          />
+        </transition>
       </div>
 
       <button
+        v-if="actualImg !== gallery.length - 1"
         class="text-3xl absolute top-1/2 right-2 text-white"
         @click="nextImg"
       >
@@ -65,3 +70,23 @@ const nextImg = () => {
   gtagEvent("event", "contact", "button", "next_gallery_img");
 };
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+</style>
