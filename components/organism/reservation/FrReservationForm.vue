@@ -79,7 +79,7 @@
             v-for="item in paymentMethodList"
             :key="item.name"
             tabindex="0"
-            class="form-checkbox block relative w-52 h-24 border overflow-hidden rounded-2xl shadow-[0_2px_5px_0px_rgba(0,0,0,0.40)] cursor-pointer hover:border-gold-700 hover:shadow-[0_2px_15px_0px_rgba(137,129,82,0.50)] focus-within:border-gold-700 focus-within:shadow-[0_2px_15px_0px_rgba(137,129,82,0.50)] has-[:checked]:border-gold-600 has-[:checked]:border-2 has-[:checked]:shadow-none"
+            class="form-checkbox block relative w-52 h-24 border overflow-hidden rounded-2xl shadow-[0_2px_5px_0px_rgba(0,0,0,0.40)] cursor-pointer hover:border-gold-700 hover:shadow-[0_2px_15px_0px_rgba(137,129,82,0.50)] focus-within:border-gold-700 focus-within:shadow-[0_2px_15px_0px_rgba(137,129,82,0.50)] has-[:checked]:border-gold-500 has-[:checked]:border-[4px] has-[:checked]:shadow-none"
             @click="errors.payment = false"
           >
             <img

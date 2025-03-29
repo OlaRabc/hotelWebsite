@@ -32,7 +32,7 @@
       <div class="text-center text-2xl">
         Cena za pobyt:
         <span class="italic font-bold">
-          {{ countNights() * reservationData.reservationRoom.price }} zł
+          {{ countNights() * reservationData.reservationRoom?.price }} zł
         </span>
       </div>
     </div>
@@ -94,7 +94,12 @@
             {{
               reservationData.contractDetails?.paymentMethod === "TRADITIONAL"
                 ? "Karta płatnicza "
-                : "BLIK"
+                : ""
+            }}
+            {{
+              reservationData.contractDetails?.paymentMethod === "BLIK"
+                ? "BLIK"
+                : ""
             }}
           </span>
         </div>
@@ -115,7 +120,7 @@
       </div>
     </div>
 
-    <div class="text-4xl text-center font-bold mb-32">
+    <div class="text-4xl text-center font-bold mb-32 pb-32 md:pb-8">
       Suma: <span class="text-gold-500 italic"> {{ costSum() }} zł</span>
     </div>
   </div>
@@ -139,7 +144,7 @@ const costSum = () => {
   );
 
   return (
-    countNights() * reservationData.reservationRoom.price + totalServiceCost
+    countNights() * reservationData.reservationRoom?.price + totalServiceCost
   );
 };
 
@@ -147,17 +152,16 @@ const makeReservation = () => {
   window.location.href = "https://forms.gle/Q6UAbZG6EdtG6aT3A";
 };
 
-const numberOfNights = ref(0);
 const countNights = () => {
   let date1 = new Date(reservationData.arrivalDate);
   let date2 = new Date(reservationData.departureDate);
 
-  let diffInTime = date1 - date2;
+  let diffInTime = date2 - date1;
   return diffInTime / (1000 * 60 * 60 * 24);
 };
 
 const countPrice = (cost, quantity) => {
-  const c = quantity === "/raz" ? cost : cost * numberOfNights.value;
+  const c = quantity === "/raz" ? cost : cost * countNights();
 
   return c;
 };

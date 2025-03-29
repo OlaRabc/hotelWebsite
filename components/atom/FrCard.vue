@@ -12,7 +12,7 @@
     />
 
     <h3
-      class="absolute top-0 left-0 w-[100%] py-2 bg-gold-500 bg-opacity-80 text-white text-center text-xl font-bold z-10 max-md:hidden"
+      class="absolute top-0 left-0 w-[100%] py-2 bg-gold-500 bg-opacity-80 text-white text-center text-xl font-bold z-10"
     >
       {{ data.title }}
     </h3>

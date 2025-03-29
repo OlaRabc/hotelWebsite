@@ -1,5 +1,5 @@
 <template>
-  <FrBox class="w-full md:w-1/2 mb-24 lg:mb-0">
+  <FrBox class="w-full mb-24 lg:mb-0">
     <h3 class="font-semibold text-5xl mb-12">Napisz do nas</h3>
 
     <form @submit.prevent="handleSubmit">

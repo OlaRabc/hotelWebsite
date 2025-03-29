@@ -27,8 +27,8 @@
             class="mb-1 font-bold text-xl transition-all delay-150"
             :class="[
               item.selected
-                ? 'text-green-500 group-hover:text-red-300'
-                : 'group-hover:text-green-300',
+                ? 'text-green-500 md:group-hover:text-red-300'
+                : 'md:group-hover:text-green-300',
             ]"
           >
             {{ item.name }}

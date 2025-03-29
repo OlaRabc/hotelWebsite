@@ -16,7 +16,7 @@ export const useReservationData = defineStore("reservationData", {
     setSelectedServicesList(value: any) {
       this.selectedServicesList = value;
     },
-    setDates(departureDate: any, arrivalDate: any) {
+    setDates(arrivalDate: any, departureDate: any) {
       this.departureDate = departureDate;
       this.arrivalDate = arrivalDate;
     },

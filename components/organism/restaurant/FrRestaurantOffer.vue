@@ -5,7 +5,7 @@
     <div class="flex justify-around gap-4 flex-wrap">
       <button
         tabindex="0"
-        class="relative text-center mb-12 w-[300px] h-[350px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700 outline-2 outline-offset-4"
+        class="relative text-center mb-12 w-[300px] h-[350px] flex-auto cursor-pointer overflow-hidden rounded-2xl outline-2 outline-offset-4"
         @click="openModal('breakfast')"
         @keydown.enter="openModal('breakfast')"
         @keydown.space.prevent="openModal('breakfast')"
@@ -23,7 +23,7 @@
       </button>
       <button
         tabindex="0"
-        class="relative text-center mb-12 w-[300px] h-[350px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700 outline-2 outline-offset-4"
+        class="relative text-center mb-12 w-[300px] h-[350px] flex-auto cursor-pointer overflow-hidden rounded-2xl outline-2 outline-offset-4"
         @click="openModal('lunch')"
         @keydown.enter="openModal('lunch')"
         @keydown.space.prevent="openModal('lunch')"
@@ -41,7 +41,7 @@
       </button>
       <button
         tabindex="0"
-        class="relative text-center mb-12 w-[300px] h-[350px] flex-auto cursor-pointer overflow-hidden rounded-2xl bg-red-700 outline-2 outline-offset-4"
+        class="relative text-center mb-12 w-[300px] h-[350px] flex-auto cursor-pointer overflow-hidden rounded-2xl outline-2 outline-offset-4"
         @click="openModal('dinner')"
         @keydown.enter="openModal('dinner')"
         @keydown.space.prevent="openModal('dinner')"
@@ -49,7 +49,7 @@
         <img
           :src="`/images/restaurant/dinner.jpeg`"
           alt="Zdjęcie Kolacji"
-          class="w-full object-cover h-full rounded-2xl object-top"
+          class="w-full object-cover h-full rounded-2xl object-center"
         />
         <p
           class="absolute bottom-0 left-0 w-full bg-gold-600 font-bold text-white text-xl"
