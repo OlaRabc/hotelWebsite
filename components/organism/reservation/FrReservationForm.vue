@@ -143,7 +143,7 @@
       </div>
 
       <div class="flex justify-between">
-        <FrButton @onClick="router.back()"> Cofnij </FrButton>
+        <FrButton @onClick="goBack"> Cofnij </FrButton>
 
         <FrButton @onClick="handleSubmit"> Podsumowanie </FrButton>
       </div>
@@ -152,6 +152,7 @@
 </template>
 
 <script setup lang="ts">
+import { gtagEvent } from "@/assets/js/main";
 import { useReservationData } from "~/stores/reservationData";
 const reservationData = useReservationData();
 
@@ -210,6 +211,8 @@ const handleSubmit = () => {
   if (!isDataValid()) return;
 
   reservationData.setContractDetails(formData);
+
+  gtagEvent("event", "reservation", "button", "contract_personal_details", reservationData.contractDetails);
   router.push(`/rezerwuj-pokoj/krok-3`);
 };
 
@@ -259,4 +262,10 @@ onMounted(() => {
     formData.paymentMethod = reservationData.contractDetails?.paymentMethod;
   }
 });
+
+const goBack = ()=>{
+  gtagEvent("event", "reservation", "button", "back_to_extra_services", reservationData.contractDetails);
+
+  router.back()
+}
 </script>

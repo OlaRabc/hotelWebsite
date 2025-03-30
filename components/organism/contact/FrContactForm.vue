@@ -60,7 +60,6 @@ const form = ref({
 });
 
 const handleSubmit = () => {
-  console.log('sd')
   gtagEvent("event", "form", "form_submit", "contact_form_submit");
 
   responseMessage.value = "SENTED";
