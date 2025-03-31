@@ -26,5 +26,15 @@ export const useReservationData = defineStore("reservationData", {
     setGuests(value: number) {
       this.guests = value;
     },
+    getAllData() {
+      return {
+        reservationRoom: this.reservationRoom,
+        selectedServicesList: this.selectedServicesList,
+        arrivalDate: this.arrivalDate,
+        departureDate: this.departureDate,
+        contractDetails: this.contractDetails,
+        guests: this.guests,
+      };
+    },
   },
 });

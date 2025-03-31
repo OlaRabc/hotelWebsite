@@ -13,6 +13,7 @@
         :href="item.to"
         target="_blank"
         class="relative rounded-xl overflow-hidden cursor-pointer outline-offset-4 max-h-[390px] flex-auto"
+        @click="gtagEvent('event', 'attractions', 'link', item.title)"
       >
         <img
           :src="item.img"
@@ -33,6 +34,8 @@
 </template>
 
 <script setup lang="ts">
+import { gtagEvent } from "@/assets/js/main";
+
 const attractions = [
   {
     title: "Park Linowy Bluszcz",

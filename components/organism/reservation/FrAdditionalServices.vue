@@ -4,7 +4,7 @@
       Uczyń swój wyjazd bardziej wyjątkowym i dobierz usługi dodatkowe:
     </h3>
     <div class="sticky top-[90%] flex justify-between -mx-12 z-20">
-      <FrFollowButton type="left" @click="router.back()">
+      <FrFollowButton type="left" @click="goBack">
         Anuluj
       </FrFollowButton>
 
@@ -59,6 +59,7 @@
 </template>
 
 <script setup lang="ts">
+import { gtagEvent } from "@/assets/js/main";
 import { useReservationData } from "~/stores/reservationData";
 const reservationData = useReservationData();
 
@@ -141,11 +142,17 @@ const handleClick = (name: String): void => {
   servicesList.value.forEach((service) => {
     if (service.name === name) {
       service.selected = !service.selected;
+
+      service.selected === true
+        ? gtagEvent("event", "reservation", "button", "extra_service_select", service)
+        : gtagEvent("event", "reservation", "button", "extra_service_unselect", service);
     }
   });
 };
 
 const goNextStep = (): void => {
+  gtagEvent("event", "reservation", "button", "continue_reservation")
+
   const selectedServicesList = servicesList.value
     .filter((service) => service.selected)
     .map((service) => ({
@@ -158,4 +165,10 @@ const goNextStep = (): void => {
   reservationData.setSelectedServicesList(selectedServicesList);
   router.push(`/rezerwuj-pokoj/krok-2`);
 };
+
+const goBack = ()=>{
+  gtagEvent("event", "reservation", "button", "delete_reservation")
+  router.back()
+
+}
 </script>

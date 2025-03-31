@@ -49,6 +49,7 @@
 </template>
 
 <script setup lang="ts">
+import { gtagEvent } from "@/assets/js/main";
 import type Room from "~/enums/roomEnum";
 import { useReservationData } from "~/stores/reservationData";
 const router = useRouter();
@@ -62,6 +63,7 @@ const props = defineProps({
 
 const reservationData = useReservationData();
 const roomBooking = (room: Room) => {
+  gtagEvent("event", "reservation", "button", "room_reservation", room);
   reservationData.setReservationRoom(room);
 
   router.push(`/rezerwuj-pokoj/krok-1`);

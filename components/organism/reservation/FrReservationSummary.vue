@@ -127,6 +127,7 @@
 </template>
 
 <script setup lang="ts">
+import { gtagEvent } from "@/assets/js/main";
 import { useReservationData } from "~/stores/reservationData";
 const reservationData = useReservationData();
 
@@ -149,6 +150,8 @@ const costSum = () => {
 };
 
 const makeReservation = () => {
+  gtagEvent("event", "reservation", "button", "make_reservation", reservationData.getAllData());
+
   window.location.href = "https://forms.gle/Q6UAbZG6EdtG6aT3A";
 };
 
