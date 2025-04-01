@@ -19,7 +19,7 @@
       </p>
       <div class="flex justify-around flex-wrap">
         <button
-          class="p-2 rounded font-bold text-white text-xl mb-4"
+          class="p-2 rounded font-bold text-white text-xl mb-4 bg-red-500"
           @click="goToGoogle"
         >
           Wyjdź
