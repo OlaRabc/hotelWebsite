@@ -1,6 +1,6 @@
 <template>
   <FrBox class="mb-32 !px-0">
-    <h3 class="font-semibold text-3xl mb-12 text-center md:text-left">
+    <h3 class="font-semibold text-3xl mb-12 pl-4 text-center md:text-left">
       Dostępne obiekty:
     </h3>
 

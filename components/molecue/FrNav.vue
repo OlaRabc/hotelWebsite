@@ -77,12 +77,12 @@ const navigateTo = () => {
 
 const pageList = [
   {
-    name: "Cennik",
-    src: "/cennik",
+    name: "Hotel",
+    src: "/hotel",
   },
   {
-    name: "Restauracja",
-    src: "/restauracja",
+    name: "Kontakt",
+    src: "/kontakt",
   },
   {
     name: "Strefa Relaksu",
@@ -92,14 +92,20 @@ const pageList = [
     name: "Atrakcje",
     src: "/atrakcje",
   },
+  
   {
-    name: "Kontakt",
-    src: "/kontakt",
+    name: "Restauracja",
+    src: "/restauracja",
   },
   {
-    name: "Hotel",
-    src: "/hotel",
+    name: "Rezerwuj",
+    src: "/cennik",
   },
+  
+  
+  
+  
+  
 ];
 
 const isNavOpen: boolean = ref(false);
